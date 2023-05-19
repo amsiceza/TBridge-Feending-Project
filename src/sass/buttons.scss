@@ -3,39 +3,40 @@
 
 //Desktop buttons
 
-
 //Bases
 %basic {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 14px 8px;
+    padding: 14px 8px; //Not the same for all???
     backdrop-filter: blur(16px);
+    
+    
 
-    span{
-        // flex: none;
-        // order: 1;
-        // flex-grow: 0;
-
+     span{
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 0px;
         gap: 6px;
-        font-family: inherit;
+    
+    }
+//Svg refers to the icon
+    svg {
+        font-size: 1.5em;
     }
 
+   
 }
 
-
 //SIZE
+
+
+
 %md {
     // position: absolute;
     width: 155.5px;
-    height: 42px;
-    left: 20px;
-    top: 20px;
 
 
 }
@@ -43,13 +44,10 @@
 %lg {
     // position: absolute;
     width: 248px;
-    height: 42px;
-    left: 19.5px;
-    top: 20px;
+  
 }
 
-
-
+//SPAN for icon and text
 
 %text-icon-div {
     flex: none;
@@ -58,40 +56,82 @@
     }
 
 
-.btn-text {
-    font-size: 17px;
-    line-height: 22px;
-    letter-spacing: -0.41px;
-}
-
-
-
-%btn-guardar{
+%btn-green{
     @extend %basic;
     color:  $green;
-    background-color: #FFFF;
-    border-color: #9AD9CE;
+    background-color: $ultra-white;
+    border-color:$green;
 
-    &:hover {
-        background-color: $green;
-        color: #FFFF;
-         
-    }
-    &:active {  
+    &:hover{  
         color: $green10;
+        background-color: $ultra-white;
         border-color: $green10;
     
     }
+    
+    &:active {
+        background-color: $green;
+        color: $ultra-white
+         
+    }
+    &:disabled {
+        border-color: $white-gray;  //Figma says one shade away from defined colors, using defined instead
+    }
+    
 }
 
-.btn-guardar-md {
-    @extend %btn-guardar;
+
+%btn-gray {
+    @extend %basic;
+    color:  $gray;
+    background-color: $white;
+    border-color:$gray-white;
+
+&:hover{  
+    background-color: $white-gray;
+   
+}
+
+&:active {
+    background-color: $gray;
+    color: $white-gray;
+}
+
+}
+
+
+
+//THESE ARE THE CLASSES TO USE IN JSX TAGS!
+
+.btn-green-md {
+    @extend %btn-green;
     @extend %md;
 }
 
-.btn-guardar-lg {
-    @extend %btn-guardar;
+.btn-green-lg {
+    @extend %btn-green;
     @extend %lg;
 }
 
+.btn-green-sm {
+    @extend %btn-green;
+    width: 130px;
+}
 
+
+.btn-gray-md {
+    @extend %btn-gray;
+    @extend %md;
+}
+
+
+.btn-location {
+    @extend %btn-gray;
+    gap:13px;
+    width: 179px;
+}
+
+.btn-time {
+    @extend %btn-gray;
+    width: 144px;
+}

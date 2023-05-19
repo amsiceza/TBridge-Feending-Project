@@ -8,7 +8,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  /* color: rgba(255, 255, 255, 0.87); */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -38,6 +38,8 @@ button {
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
+  letter-spacing: 0.41px;
+  height:42px;
 }
 
 
