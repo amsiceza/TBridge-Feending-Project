@@ -1,4 +1,6 @@
 
+@import "../colors.scss";
+
 //Desktop buttons
 
 
@@ -9,10 +11,21 @@
     justify-content: center;
     align-items: center;
     padding: 14px 8px;
-
     backdrop-filter: blur(16px);
-    border-radius: 8px;
-    border: 1x solid;
+
+    span{
+        // flex: none;
+        // order: 1;
+        // flex-grow: 0;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 6px;
+        font-family: inherit;
+    }
+
 }
 
 
@@ -55,18 +68,18 @@
 
 %btn-guardar{
     @extend %basic;
-    color:  #00C2A2;
+    color:  $green;
     background-color: #FFFF;
     border-color: #9AD9CE;
 
     &:hover {
-        background-color: #00C2A2;
+        background-color: $green;
         color: #FFFF;
          
     }
     &:active {  
-        color: #9AD9CE;
-        border-color: #9AD9CE;
+        color: $green10;
+        border-color: $green10;
     
     }
 }

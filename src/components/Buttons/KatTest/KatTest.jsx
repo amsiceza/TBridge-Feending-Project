@@ -7,7 +7,7 @@ const KatTest = () => {
     <>
     <div>KatTest</div>
 
-    <div><button type="button" className="btn-guardar-lg">    <i><HiDocumentCheck></HiDocumentCheck></i><span>button</span></button></div>
+    <div><button type="button" className="btn-guardar-lg">    <span><i><HiDocumentCheck></HiDocumentCheck></i>guardar</span></button></div>
 
     <div><button type="button" className="btn-guardar-md">guardar</button></div>
  
