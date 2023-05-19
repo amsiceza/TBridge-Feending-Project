@@ -1,0 +1,84 @@
+
+//Desktop buttons
+
+
+//Bases
+%basic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 8px;
+
+    backdrop-filter: blur(16px);
+    border-radius: 8px;
+    border: 1x solid;
+}
+
+
+//SIZE
+%md {
+    // position: absolute;
+    width: 155.5px;
+    height: 42px;
+    left: 20px;
+    top: 20px;
+
+
+}
+
+%lg {
+    // position: absolute;
+    width: 248px;
+    height: 42px;
+    left: 19.5px;
+    top: 20px;
+}
+
+
+
+
+%text-icon-div {
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    }
+
+
+.btn-text {
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -0.41px;
+}
+
+
+
+%btn-guardar{
+    @extend %basic;
+    color:  #00C2A2;
+    background-color: #FFFF;
+    border-color: #9AD9CE;
+
+    &:hover {
+        background-color: #00C2A2;
+        color: #FFFF;
+         
+    }
+    &:active {  
+        color: #9AD9CE;
+        border-color: #9AD9CE;
+    
+    }
+}
+
+.btn-guardar-md {
+    @extend %btn-guardar;
+    @extend %md;
+}
+
+.btn-guardar-lg {
+    @extend %btn-guardar;
+    @extend %lg;
+}
+
+
