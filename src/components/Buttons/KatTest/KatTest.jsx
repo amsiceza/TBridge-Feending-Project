@@ -1,6 +1,7 @@
 import React from 'react'
 import "../../../sass/buttons.scss"
 import { HiDocumentCheck, HiClipboardDocumentList, HiClipboardDocumentCheck, HiEnvelope, HiClock, HiChevronRight, HiMapPin, HiChevronDown, HiCalendar } from "react-icons/hi2"
+import BtnDate from '../BtnDate'
 
 
 
@@ -8,11 +9,7 @@ import { HiDocumentCheck, HiClipboardDocumentList, HiClipboardDocumentCheck, HiE
 
 
 
-
-
-
 const KatTest = () => {
-
 
   return (
     <>
@@ -104,6 +101,7 @@ const KatTest = () => {
 </div>
       
       
+<BtnDate></BtnDate>
 
 
 

@@ -1,22 +1,22 @@
 import React from 'react'
-import "../../../sass/buttons.scss"
+
+import "../../sass/buttons.scss"
 import {  HiChevronDown, HiCalendar } from "react-icons/hi2"
 
-import React from 'react'
+
 
 const BtnDate = () => {
 
 //NEEDS CALENDAR FUNCTION
 
-
-
     return (
     <>
     <button type="button" className="btn-location">
     <span>
-      <HiCalendar></HiCalendar>         
-              23/05/2023
-      <HiChevronDown></HiChevronDown>
+      <HiCalendar></HiCalendar> 
+      23/05/2023        
+
+      <HiChevronDown > </HiChevronDown>
     </span>
 </button>
     </>

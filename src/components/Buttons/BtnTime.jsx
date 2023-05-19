@@ -1,9 +1,7 @@
 import React from 'react'
-import "../../../sass/buttons.scss"
-import { HiDocumentCheck, HiClipboardDocumentList, HiClipboardDocumentCheck, HiEnvelope, HiClock, HiChevronRight, HiMapPin, HiChevronDown, HiCalendar } from "react-icons/hi2"
+import "../../sass/buttons.scss"
+import {  HiClock, HiChevronDown,} from "react-icons/hi2"
 
-
-import React from 'react'
 
 const BtnTime = () => {
 

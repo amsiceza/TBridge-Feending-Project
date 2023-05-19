@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../../sass/buttons.scss"
+import "../../sass/buttons.scss"
 import {HiDocumentCheck} from "react-icons/hi2"
 
 
