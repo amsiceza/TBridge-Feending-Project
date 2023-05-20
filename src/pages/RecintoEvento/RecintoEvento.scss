@@ -1,6 +1,13 @@
 @import "../../colors.scss";
 
-
+.recinto-content{
+    h2{
+        font-size: 22px;
+        letter-spacing: 0.34px;
+        margin-top: 27px;
+        margin-bottom: 1rem;
+    }
+}
 .recinto-main-container {
   display: flex;
   width: 70%;
@@ -9,12 +16,45 @@
   border-radius: 10px;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 55px;
+  margin-top: 35px;
 
     .recinto-mvl{
         img{
             height: 550px;
             width: auto;
+        }
+    }
+    
+    .first-label-recinto{
+        margin-right: 1.2rem;
+        background-color: $ultra-white;
+        display: flex;
+        align-items: center;
+        padding: 1.2rem;
+        border-radius: 10px;
+
+        .mapa{
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .mapa-text{
+            font-size: 16px;
+            margin-right: 2rem;
+        }
+        .btn-first-lbl{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+
+
+            .icons{
+                display: flex;
+                gap: 0.8rem;
+                font-size: 22px;
+                color: $black;
+            }
         }
     }
 }
