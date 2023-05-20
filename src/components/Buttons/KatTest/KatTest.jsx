@@ -102,6 +102,18 @@ const KatTest = () => {
       
       
 <BtnDate></BtnDate>
+<div>
+<div>Input tests</div>
+<button type="button" className="btn-location">
+    <span>
+      <HiCalendar></HiCalendar>         
+      <input type="date"/>
+      <HiChevronDown></HiChevronDown>
+    </span>
+</button>
+</div>
+
+
 
 
 
