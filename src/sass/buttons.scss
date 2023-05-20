@@ -58,12 +58,11 @@
 %btn-green{
     @extend %basic;
     color:  $green;
-    background-color: $ultra-white;
     border-color:$green;
+    background-color: transparent;
 
     &:hover{  
         color: $green10;
-        background-color: $ultra-white;
         border-color: $green10;
     
     }
