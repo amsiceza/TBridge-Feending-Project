@@ -1,0 +1,61 @@
+@import "../colors.scss";
+
+
+
+
+.form-background {
+    width: 1305px;
+    height: 868px;
+    border-radius: 10px;
+    background-color: $white-l-gray;
+
+
+}
+
+.activity-form {
+    width: 1226.23px;
+height: 660px;
+overflow-y: scroll;
+background-color: $white-gray;
+
+}
+
+
+.activity-div {
+    width: 1143.19px;
+    height: 71px;
+
+// /* Neutral Color/White */
+// border: 1px solid #F9F9F9;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 1;
+// flex-grow: 0;
+}
+
+
+.inputs-div {
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 43px;
+
+width: 1142.4px;
+height: 42px;
+
+
+}
+
+.activity-icons {
+    width: 68px;
+height: 28px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+}
