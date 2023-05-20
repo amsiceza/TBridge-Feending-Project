@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {HiOutlineTrash, HiOutlineCheck} from "react-icons/hi2"
+import {HiOutlineTrash, HiOutlineCheck, HiOutlinePaintBrush} from "react-icons/hi2"
 import "./KatForm.scss"
 import BtnAddActivity from '../components/Buttons/BtnAddActivity';
 const KatForm = () => {
@@ -23,11 +23,39 @@ const KatForm = () => {
     setInputGroups(updatedGroups);
   };
 
+  const handleConvertToText = (index) => {
+    const updatedGroups = [...inputGroups];
+    const group = updatedGroups[index];
+    const convertedGroup = {
+      input1: group.input1 ? group.input1 : '00:00',
+      input2: group.input2 ? group.input2 : '00:00',
+      input3: group.input3 ? group.input3 : '00:00',
+      showText: true
+    };
+    updatedGroups[index] = convertedGroup;
+    setInputGroups(updatedGroups);
+  };
 
+  const handleConvertToInput = (index) => {
+    const updatedGroups = [...inputGroups];
+    const group = updatedGroups[index];
+    updatedGroups[index] = { ...group, showText: false };
+    setInputGroups(updatedGroups);
+  };
 
   const renderInputGroups = () => {
     return inputGroups.map((group, index) => (
-      <div key={index} className="activity-div">
+
+      <div key={index}  className="activity-div">
+        {group.showText ? (
+          <span className = "inputs-div"><span>{group.input1} </span>- <span>{group.input2} </span><span> {group.input3} </span><span className="activity-icons">
+          <i type="button" onClick={() => handleConvertToInput(index)}><HiOutlinePaintBrush/></i>
+
+
+              <i type="button"onClick={() => deleteActivity(index)}><HiOutlineTrash/></i>
+        </span></span>
+        ) : (
+      
         <span className="inputs-div">
           <input
           type="time"
@@ -46,10 +74,15 @@ const KatForm = () => {
             onChange={(e) => handleInputChange(index, 'input3', e.target.value)}
           />
           <span className="activity-icons">
-              <i type="button" ><HiOutlineCheck/></i>
-              <i type="button"onClick={() => deleteActivity(index)}><HiOutlineTrash/></i>
+              <i type="button" onClick={() => handleConvertToText(index)}><HiOutlineCheck/></i>
+
+   
+                  <i type="button"onClick={() => deleteActivity(index)}><HiOutlineTrash/></i>
             </span>
+           
         </span>
+  )}
+       
 
       </div>
     ));
