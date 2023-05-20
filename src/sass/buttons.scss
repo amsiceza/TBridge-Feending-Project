@@ -135,10 +135,12 @@
     width: 144px;
 }
 
-
-
-
-
+.btn-add-activity {
+    @extend %btn-green;
+    background-color: inherit;
+    width: 145px;
+    font-size: 11px;
+}
 
 input[type="date" i] {
     font-family: inherit;

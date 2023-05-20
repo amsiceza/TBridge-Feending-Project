@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {HiOutlineTrash, HiOutlineCheck} from "react-icons/hi2"
 import "./KatForm.scss"
+import BtnAddActivity from '../components/Buttons/BtnAddActivity';
 const KatForm = () => {
   const [inputGroups, setInputGroups] = useState([
     { input1: '', input2: '', input3: '' }
@@ -15,6 +16,14 @@ const KatForm = () => {
     updatedGroups[index][inputName] = value;
     setInputGroups(updatedGroups);
   };
+
+  const deleteActivity = (index) => {
+    const updatedGroups = [...inputGroups];
+    updatedGroups.splice(index, 1);
+    setInputGroups(updatedGroups);
+  };
+
+
 
   const renderInputGroups = () => {
     return inputGroups.map((group, index) => (
@@ -32,13 +41,13 @@ const KatForm = () => {
             onChange={(e) => handleInputChange(index, 'input2', e.target.value)}
           />
           <input
-          type="text"
+            type="text"
             value={group.input3}
             onChange={(e) => handleInputChange(index, 'input3', e.target.value)}
           />
           <span className="activity-icons">
-              <i type="button"><HiOutlineCheck/></i>
-              <i type="button"><HiOutlineTrash/></i>
+              <i type="button" ><HiOutlineCheck/></i>
+              <i type="button"onClick={() => deleteActivity(index)}><HiOutlineTrash/></i>
             </span>
         </span>
 
@@ -82,7 +91,8 @@ const KatForm = () => {
 
      </form>
 
-<button onClick={handleAddInputGroup}>añadir actividad</button>
+<BtnAddActivity handleClick={handleAddInputGroup}/>
+
 </div>
 
 </div>
