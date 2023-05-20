@@ -1,10 +1,10 @@
-import './App.css'
+import './App.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import {KatTest} from './components/Buttons/KatTest/KatTest'
 
 import Home from './components/Buttons/Home/Home'
 import KatForm from './KatForm/KatForm'
+import KatTest from './components/Buttons/KatTest/KatTest'
 
 
 function App() {
@@ -14,8 +14,8 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/Kat" element={<KatTest/>}/>
-      <Route path="/Katform" element={<KatForm/>}/>
+      <Route path="/kat" element={<KatTest/>}/>
+      <Route path="/katform" element={<KatForm/>}/>
     </Routes>
     </BrowserRouter>
 

@@ -4,9 +4,7 @@ import { HiDocumentCheck, HiClipboardDocumentList, HiClipboardDocumentCheck, HiE
 import BtnDate from '../BtnDate'
 
 
-
 /* ICON LIBRARY SHOULD BE HEROICON directly, but I can't change the icon color!!! So using react-icons heroicons instead, slight differences */
-
 
 
 const KatTest = () => {
@@ -102,6 +100,18 @@ const KatTest = () => {
       
       
 <BtnDate></BtnDate>
+<div>
+<div>Input tests</div>
+<button type="button" className="btn-location">
+    <span>
+      <HiCalendar></HiCalendar>         
+      <input type="date"/>
+      <HiChevronDown></HiChevronDown>
+    </span>
+</button>
+</div>
+
+
 
 
 

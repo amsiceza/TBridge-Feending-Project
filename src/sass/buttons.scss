@@ -11,9 +11,8 @@
     align-items: center;
     padding: 14px 8px; //Not the same for all???
     backdrop-filter: blur(16px);
-    
-    
 
+ 
      span{
         display: flex;
         flex-direction: row;
@@ -135,3 +134,38 @@
     @extend %btn-gray;
     width: 144px;
 }
+
+
+
+
+
+
+input[type="date" i] {
+    font-family: inherit;
+    color: inherit;
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
+    border-radius: none;
+    border: 0px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.41px;
+    height:80%;
+    display: absolute;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    width: 50%; 
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    color: transparent;
+    background: none;
+    z-index: 1;
+    // position: absolute;
+    // right: 15px;
+  }
+  
+  
