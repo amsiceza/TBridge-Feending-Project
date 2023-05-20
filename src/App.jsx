@@ -15,14 +15,10 @@ function App() {
   <BrowserRouter>
     <Sidebar/>
     <Routes>
-<<<<<<< HEAD
       <Route path="/" element={<Home/>}/>
       <Route path="/kat" element={<KatTest/>}/>
       <Route path="/katform" element={<KatForm/>}/>
-=======
-      <Route path="/Kat" element={<KatTest/>}/>
       <Route path="/recinto" element={<RecintoEvento/>}/>
->>>>>>> isma
     </Routes>
     </BrowserRouter>
   </div>
