@@ -1,8 +1,9 @@
 import React from 'react'
 import "../../../sass/buttons.scss"
+import "../../../sass/input.scss"
 import { HiDocumentCheck, HiClipboardDocumentList, HiClipboardDocumentCheck, HiEnvelope, HiClock, HiChevronRight, HiMapPin, HiChevronDown, HiCalendar } from "react-icons/hi2"
 import BtnDate from '../BtnDate'
-
+import "./KatTest.scss"
 
 
 /* ICON LIBRARY SHOULD BE HEROICON directly, but I can't change the icon color!!! So using react-icons heroicons instead, slight differences */
@@ -102,18 +103,26 @@ const KatTest = () => {
       
 <BtnDate></BtnDate>
 <div>
-<div>Input tests</div>
-<button type="button" className="btn-location">
-    <span>
-      <HiCalendar></HiCalendar>         
-      <input type="date"/>
-      <HiChevronDown></HiChevronDown>
-    </span>
-</button>
+
+
+<label htmlFor="date">
+      <span className="input-date">
+        <HiCalendar></HiCalendar>
+          <input type="date" id="date" className="" />
+        <HiChevronDown></HiChevronDown>
+      </span>
+    </label>  
+
 </div>
 
+<label htmlFor="start-time">
+     <span className="input-time">
+        <HiClock></HiClock>
+          <input type="time" id="start-time" className=""/>
+        <HiChevronDown></HiChevronDown>
+      </span>
 
-
+</label>
 
 
     </div>
