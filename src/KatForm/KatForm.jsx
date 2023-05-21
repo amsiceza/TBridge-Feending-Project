@@ -105,7 +105,7 @@ const KatForm = () => {
 
 
   return (
-    <div className='container'>
+    <div>
 
            <div className="main-background">
 <h3>Programación del evento</h3>
