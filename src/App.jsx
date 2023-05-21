@@ -7,6 +7,7 @@ import Home from './components/Buttons/Home/Home'
 import KatForm from './KatForm/KatForm'
 import KatTest from './components/Buttons/KatTest/KatTest'
 import RecintoEvento from './pages/RecintoEvento/RecintoEvento'
+import Register from './components/Register/Register'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/kat" element={<KatTest/>}/>
       <Route path="/katform" element={<KatForm/>}/>
       <Route path="/recinto" element={<RecintoEvento/>}/>
+      <Route path="/register" element={<Register/>} />
     </Routes>
     </BrowserRouter>
   </div>
