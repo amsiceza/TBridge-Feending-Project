@@ -1,6 +1,7 @@
 
 @import "../colors.scss";
 
+
 //Desktop buttons
 
 //Bases
@@ -140,4 +141,39 @@
     width: 145px;
     font-size: 11px;
 }
+
+//For programación form
+%btn-tab {
+        @extend %basic;
+        color:  $ultra-white;
+        background-color: $gray-white;
+        border-color:$gray-white;
+        border-radius: 10px 10px 0px 0px;
+    
+    &:hover{  
+        color: $gray;
+       
+    }
+    
+    &:active {
+        background-color: $gray;
+        color: $white;
+    }
+    
+    }
+    
+
+.btn-tab-day {
+    @extend %btn-tab;
+    width: 239px;
+    height: 30px;
+}
+
+.btn-tab-plus {
+    @extend %btn-tab;
+    width: 49px;
+    height: 30px;
+
+}
+
 
