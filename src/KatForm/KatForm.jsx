@@ -93,7 +93,7 @@ const KatForm = () => {
     <>
 
 
-<div>
+<div className="activity-form-container">
 <div>
       <button onClick={handleAddInputGroup}>Add Input Group</button>
     
