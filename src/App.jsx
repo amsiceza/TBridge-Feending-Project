@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Sidebar from "./components/Sidebar/Sidebar";
 
-import Home from './components/Buttons/Home/Home'
-import KatForm from './KatForm/KatForm'
+import Home from './pages/Home/Home'
+import KatForm from './components/KatForm/KatForm'
 import KatTest from './components/Buttons/KatTest/KatTest'
 import RecintoEvento from './pages/RecintoEvento/RecintoEvento'
 import Register from './components/Register/Register'

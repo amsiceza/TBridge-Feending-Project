@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import {HiOutlineTrash, HiOutlineCheck, HiOutlinePaintBrush, HiClock, HiChevronDown, HiPlusSmall, HiPlus} from "react-icons/hi2"
 import "./KatForm.scss"
-import "../sass/input.scss"
-import BtnAddActivity from '../components/Buttons/BtnAddActivity';
-import BtnSave from '../components/Buttons/BtnSave';
-import BtnNext from '../components/Buttons/BtnNext';
+import "../../sass/input.scss"
+import BtnAddActivity from '../Buttons/BtnAddActivity';
+import BtnSave from '../Buttons/BtnSave';
+import BtnNext from '../Buttons/BtnNext';
+import InputGroup from '../ActivityInputGroup/ActivityInputGroup';
 
 
 const KatForm = () => {
@@ -17,18 +18,16 @@ const KatForm = () => {
     setInputGroups([...inputGroups, { input1: '', input2: '', input3: '' }]);
   };
 
+
   const handleInputChange = (index, inputName, value) => {
     const updatedGroups = [...inputGroups];
     updatedGroups[index][inputName] = value;
     setInputGroups(updatedGroups);
   };
 
-  const deleteActivity = (index) => {
-    const updatedGroups = [...inputGroups];
-    updatedGroups.splice(index, 1);
-    setInputGroups(updatedGroups);
-  };
 
+  //The input can be converted to text by clicking the check icon
+  
   const handleConvertToText = (index) => {
     const updatedGroups = [...inputGroups];
     const group = updatedGroups[index];
@@ -41,6 +40,8 @@ const KatForm = () => {
     updatedGroups[index] = convertedGroup;
     setInputGroups(updatedGroups);
   };
+  
+//It can be converted back to input fields:
 
   const handleConvertToInput = (index) => {
     const updatedGroups = [...inputGroups];
@@ -48,69 +49,34 @@ const KatForm = () => {
     updatedGroups[index] = { ...group, showText: false };
     setInputGroups(updatedGroups);
   };
+  
 
 
-const handleSave = (e) =>{
-  e.preventDefault();
-  console.log(inputGroups)
-}
-
-
+  const deleteActivity = (index) => {
+    const updatedGroups = [...inputGroups];
+    updatedGroups.splice(index, 1);
+    setInputGroups(updatedGroups);
+  };
+  
+  const handleSave = (e) =>{
+    e.preventDefault();
+    console.log(inputGroups)
+  }
+  
+  // Another component prints the actual form. Passing values
   const renderInputGroups = () => {
     return inputGroups.map((group, index) => (
-
-      <div key={index} className="inputs-div">
-        {group.showText ? (
-          <>
-            <span className="clock-text">{group.input1} </span> <span className="clock-text">{group.input2} </span>
-            <span className="activity-text"> {group.input3} </span>
-            <span className="activity-icons">
-              <i type="button" onClick={() => handleConvertToInput(index)}><HiOutlinePaintBrush /></i>
-              <i type="button" onClick={() => deleteActivity(index)}><HiOutlineTrash /></i>
-            </span>
-          </>
-        ) : (
-          <>
-            <span className="input-time">
-              <HiClock></HiClock>
-              <input
-                type="time"
-                className=""
-                value={group.input1}
-                onChange={(e) => handleInputChange(index, 'input1', e.target.value)}
-              />
-              <HiChevronDown></HiChevronDown>
-            </span>
-
-            <span className="input-time">
-              <HiClock></HiClock>
-              <input
-                type="time"
-                value={group.input2}
-                onChange={(e) => handleInputChange(index, 'input2', e.target.value)}
-              />
-              <HiChevronDown></HiChevronDown>
-            </span>
-
-
-            <input
-              type="text"
-              value={group.input3}
-              onChange={(e) => handleInputChange(index, 'input3', e.target.value)}
-            />
-            <span className="activity-icons">
-              <i type="button" onClick={() => handleConvertToText(index)}><HiOutlineCheck /></i>
-
-              <i type="button" onClick={() => deleteActivity(index)}><HiOutlineTrash /></i>
-            </span>
-
-          </>
-        )}
-      </div>
-    ));
-  };
-
-
+      <InputGroup
+      key={index}
+      group={group}
+      index={index}
+      handleInputChange={handleInputChange}
+      handleConvertToText={handleConvertToText}
+      handleConvertToInput={handleConvertToInput}
+      deleteActivity={deleteActivity}
+    />
+  ));
+};
 
 
   return (
@@ -123,7 +89,7 @@ const handleSave = (e) =>{
           <button className="btn-tab-day" >DÍA 1</button>
           <button className="btn-tab-day">DÍA 2</button>
           <button className="btn-tab-day" >DÍA 3</button>
-          <button className="btn-tab-plus" ><span><HiPlusSmall /></span></button>
+          <button className="btn-tab-plus"><span><HiPlusSmall /></span></button>
         </div>
 
         <div className="activity-form">
