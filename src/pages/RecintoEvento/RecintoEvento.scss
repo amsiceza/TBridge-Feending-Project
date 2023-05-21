@@ -82,11 +82,11 @@
             margin-left: 35px;
             margin-top: 18px;
             .two{
-               gap: 6.2rem !important; 
+               gap: 7.2rem !important; 
             }
            .row{
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             .inputs{
                 display: flex;
                 flex-direction: column;
@@ -103,4 +103,30 @@
            }
         }
     }
+}
+
+.next-recinto-container{
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+    margin-right: 5%;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+
+        .steps{
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .points{
+            letter-spacing: 6px;
+            font-size: 13px;
+            color: $gray;
+
+        }
+        .btns{
+            display: flex;
+            gap: 1rem;
+        }
 }
