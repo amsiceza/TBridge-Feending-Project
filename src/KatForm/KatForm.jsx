@@ -5,7 +5,10 @@ import "../sass/input.scss"
 import BtnAddActivity from '../components/Buttons/BtnAddActivity';
 import BtnSave from '../components/Buttons/BtnSave';
 import BtnNext from '../components/Buttons/BtnNext';
+
+
 const KatForm = () => {
+  
   const [inputGroups, setInputGroups] = useState([
     { input1: '', input2: '', input3: '' }
   ]);
@@ -46,79 +49,82 @@ const KatForm = () => {
     setInputGroups(updatedGroups);
   };
 
+
+const handleSave = (e) =>{
+  e.preventDefault();
+  console.log(inputGroups)
+}
+
+
   const renderInputGroups = () => {
     return inputGroups.map((group, index) => (
 
-      <div key={index}  className="inputs-div">
+      <div key={index} className="inputs-div">
         {group.showText ? (
           <>
             <span className="clock-text">{group.input1} </span> <span className="clock-text">{group.input2} </span>
             <span className="activity-text"> {group.input3} </span>
             <span className="activity-icons">
-          <i type="button" onClick={() => handleConvertToInput(index)}><HiOutlinePaintBrush/></i>
-              <i type="button"onClick={() => deleteActivity(index)}><HiOutlineTrash/></i>
-        </span>
+              <i type="button" onClick={() => handleConvertToInput(index)}><HiOutlinePaintBrush /></i>
+              <i type="button" onClick={() => deleteActivity(index)}><HiOutlineTrash /></i>
+            </span>
           </>
         ) : (
-      <>
-        <span className="input-time">
-          <HiClock></HiClock>
-          <input
-          type="time"
-          className=""
-            value={group.input1}
-            onChange={(e) => handleInputChange(index, 'input1', e.target.value)}
-          />
-          <HiChevronDown></HiChevronDown>
-          </span>
-          
-          <span className="input-time">
-          <HiClock></HiClock>
-          <input
-          type="time"
-            value={group.input2}
-            onChange={(e) => handleInputChange(index, 'input2', e.target.value)}
-          />
-          <HiChevronDown></HiChevronDown>
-          </span>
-
-
-          <input
-            type="text"
-            value={group.input3}
-            onChange={(e) => handleInputChange(index, 'input3', e.target.value)}
-          />
-          <span className="activity-icons">
-              <i type="button" onClick={() => handleConvertToText(index)}><HiOutlineCheck/></i>
-
-   
-                  <i type="button"onClick={() => deleteActivity(index)}><HiOutlineTrash/></i>
+          <>
+            <span className="input-time">
+              <HiClock></HiClock>
+              <input
+                type="time"
+                className=""
+                value={group.input1}
+                onChange={(e) => handleInputChange(index, 'input1', e.target.value)}
+              />
+              <HiChevronDown></HiChevronDown>
             </span>
-           
-            </> 
-  )}
-       
 
+            <span className="input-time">
+              <HiClock></HiClock>
+              <input
+                type="time"
+                value={group.input2}
+                onChange={(e) => handleInputChange(index, 'input2', e.target.value)}
+              />
+              <HiChevronDown></HiChevronDown>
+            </span>
+
+
+            <input
+              type="text"
+              value={group.input3}
+              onChange={(e) => handleInputChange(index, 'input3', e.target.value)}
+            />
+            <span className="activity-icons">
+              <i type="button" onClick={() => handleConvertToText(index)}><HiOutlineCheck /></i>
+
+              <i type="button" onClick={() => deleteActivity(index)}><HiOutlineTrash /></i>
+            </span>
+
+          </>
+        )}
       </div>
     ));
   };
 
 
+
+
   return (
     <>
 
-           <div className="main-background">
-<h3>Programación del evento</h3>
+      <div className="main-background">
+        <h3>Programación del evento</h3>
 
         <div className="tab">
           <button className="btn-tab-day" >DÍA 1</button>
           <button className="btn-tab-day">DÍA 2</button>
           <button className="btn-tab-day" >DÍA 3</button>
-          <button className="btn-tab-plus" ><span><HiPlusSmall/></span></button>
+          <button className="btn-tab-plus" ><span><HiPlusSmall /></span></button>
         </div>
-
-
-
 
         <div className="activity-form">
 
@@ -128,34 +134,28 @@ const KatForm = () => {
             <span className="activity-text">Descripción de la actividad</span>
           </span>
 
+          {renderInputGroups()}
 
+          <div className="addbutton-div">
 
-          
-
-            {renderInputGroups()}
-
-          
-<div className="addbutton-div">
-  
             <BtnAddActivity handleClick={handleAddInputGroup} />
-</div>
-
-
+          </div>
 
         </div >
-      <div className="savebutton-div">
-      <BtnSave></BtnSave>
+
+        <span className="savebutton-div">
+          <BtnSave onClick={handleSave}></BtnSave>
+        </span>
+
       </div>
+
+      <div className="next-recinto-container">
+        <p className="steps">2 Pasos de 3 Completados</p>
+        <p className="points">● ● &#x25CB;</p>
+        <div className="btns">
+          <BtnNext></BtnNext>
+        </div>
       </div>
-
-
-<div className="nextbutton-div" >
-
-  <span>Pasos completados</span> 
-  <span> <BtnNext></BtnNext></span>
-
-</div>
-     
 
     </>
   )
