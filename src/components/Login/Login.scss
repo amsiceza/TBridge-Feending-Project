@@ -1,0 +1,38 @@
+@import "./src/colors.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh; // Ajusta la altura de acuerdo a tus necesidades
+  
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.input-style {
+  padding: 3px;
+  font-size: 16px;
+  border: 1px solid $gray;
+  border-radius: 11px;
+}
+
+.button-login{
+  margin-left: 170px;
+ margin-top: 16px;
+ color:$green;
+ background-color: $ultra-white;
+}
+
+label{
+  color:$green;
+  width: 120px; // Ajusta el ancho según tus necesidades
+  text-align: right;
+  margin-right: 23px; 
+  font-size: 17px;
+}
+
