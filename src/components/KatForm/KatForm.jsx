@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {HiOutlineTrash, HiOutlineCheck, HiOutlinePaintBrush, HiClock, HiChevronDown, HiPlusSmall, HiPlus} from "react-icons/hi2"
 import "./KatForm.scss"
 import "../../sass/input.scss"
@@ -6,10 +6,21 @@ import BtnAddActivity from '../Buttons/BtnAddActivity';
 import BtnSave from '../Buttons/BtnSave';
 import BtnNext from '../Buttons/BtnNext';
 import InputGroup from '../ActivityInputGroup/ActivityInputGroup';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeDay } from '../../features/program/programSlice';
 
 
 const KatForm = () => {
-  
+
+  const {currentDay}  = useSelector((state) => state.program);
+
+  useEffect (() => {
+    console.log(currentDay)
+  }, [currentDay])
+
+
+
+
   const [inputGroups, setInputGroups] = useState([
     { input1: '', input2: '', input3: '' }
   ]);
@@ -17,6 +28,21 @@ const KatForm = () => {
   const handleAddInputGroup = () => {
     setInputGroups([...inputGroups, { input1: '', input2: '', input3: '' }]);
   };
+
+
+
+
+
+const dispatch = useDispatch();
+
+const handleDay= (day) => {
+  dispatch(changeDay(day))
+}
+
+
+
+
+
 
 
   const handleInputChange = (index, inputName, value) => {
@@ -108,7 +134,7 @@ const KatForm = () => {
         <div className="tab">
           <button className="btn-tab-day" >DÍA 1</button>
           <button className="btn-tab-day">DÍA 2</button>
-          <button className="btn-tab-day" >DÍA 3</button>
+          <button className="btn-tab-day" onClick={()=>(handleDay(3))}>DÍA 3</button>
           <button className="btn-tab-plus"><span><HiPlusSmall /></span></button>
         </div>
 
