@@ -1,7 +1,7 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
-import Home from './components/Buttons/Home/Home';
+import Home from '../src/pages/Home/Home'
 
 import KatTest from './components/Buttons/KatTest/KatTest';
 import RecintoEvento from './pages/RecintoEvento/RecintoEvento';
