@@ -22,7 +22,9 @@ const KatForm = () => {
   const handleInputChange = (index, inputName, value) => {
     const updatedGroups = [...inputGroups];
     updatedGroups[index][inputName] = value;
+    console.log("updatedgroups,", updatedGroups)
     setInputGroups(updatedGroups);
+    console.log(inputGroups)
   };
 
 
@@ -50,8 +52,6 @@ const KatForm = () => {
     setInputGroups(updatedGroups);
   };
   
-
-
   const deleteActivity = (index) => {
     const updatedGroups = [...inputGroups];
     updatedGroups.splice(index, 1);
@@ -59,9 +59,21 @@ const KatForm = () => {
   };
   
   const handleSave = (e) =>{
-    e.preventDefault();
-    console.log(inputGroups)
-  }
+      const inputGroupsShowTrue =inputGroups.map((row, index) => {
+      return {
+        input1: row.input1 ? row.input1 : '00:00',
+        input2: row.input2 ? row.input2 : '00:00',
+        input3: row.input3 ? row.input3 : 'N/A',
+        showText: true}
+      })
+      setInputGroups(inputGroupsShowTrue)
+      e.preventDefault();
+      console.log( "Inside katform ", inputGroups)
+    }
+  
+
+
+
   
   // Another component prints the actual form. Passing values
   const renderInputGroups = () => {
@@ -70,6 +82,7 @@ const KatForm = () => {
       key={index}
       group={group}
       index={index}
+      // handleSave={handleSave}
       handleInputChange={handleInputChange}
       handleConvertToText={handleConvertToText}
       handleConvertToInput={handleConvertToInput}
@@ -77,6 +90,13 @@ const KatForm = () => {
     />
   ));
 };
+
+
+
+
+
+
+
 
 
   return (

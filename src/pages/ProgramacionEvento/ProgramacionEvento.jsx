@@ -2,33 +2,14 @@ import React, { useState } from 'react'
 import { HiPlusSmall} from "react-icons/hi2"
 import "../../components/KatForm/KatForm.scss"
 import "../../sass/input.scss"
-import BtnAddActivity from '../../components/Buttons/BtnAddActivity';
-import BtnSave from '../../components/Buttons/BtnSave';
 import BtnNext from '../../components/Buttons/BtnNext';
-import InputGroup from '../../components/ActivityInputGroup/ActivityInputGroup';
 import ActivityForm from '../../components/KatForm/ActivityForm';
 
 
 const ProgramacionEvento = () => {
   
-  // const [inputGroups, setInputGroups] = useState([
-  //   { input1: '', input2: '', input3: '' }
-  // ]);
-
-  // const handleAddInputGroup = () => {
-  //   setInputGroups([...inputGroups, { input1: '', input2: '', input3: '' }]);
-  // };
-
-
-  // const handleInputChange = (index, inputName, value) => {
-  //   const updatedGroups = [...inputGroups];
-  //   updatedGroups[index][inputName] = value;
-  //   setInputGroups(updatedGroups);
-  // };
-
-
   const [tabCounter, setTabCounter] = useState(2)
-  const [selectedButton, setSelectedButton] = useState()
+  const [selectedButton, setSelectedButton] = useState(1)
   const [tabs, setTabs] = useState([
     <button key={1} className={selectedButton == 1  ? 'btn-tab-day-selected' : 'btn-tab-day'} value={1}>
       DÍA 1
@@ -41,7 +22,7 @@ const ProgramacionEvento = () => {
     console.log(typeof event.target.value)
     console.log("SelectedButton is ", selectedButton)
     console.log("Value of the buttons is: ", event.target.value)
-    setSelectedButton(event.target.value)
+    setSelectedButton(tabCounter + 1)
     console.log("SelectedButton is ", selectedButton)
   }
 

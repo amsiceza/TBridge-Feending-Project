@@ -11,11 +11,11 @@ import InputGroup from '../ActivityInputGroup/ActivityInputGroup';
 const ActivityForm = (props) => {
   
   const [inputGroups, setInputGroups] = useState([
-    { dia: props.day, input1: '', input2: '', input3: '' }
+    { input0: props.day, input1: '', input2: '', input3: '' }
   ]);
 
   const handleAddInputGroup = () => {
-    setInputGroups([...inputGroups, {dia: props.day, input1: '', input2: '', input3: '' }]);
+    setInputGroups([...inputGroups, {input0: props.day, input1: '', input2: '', input3: '' }]);
   };
 
 
@@ -60,8 +60,9 @@ const ActivityForm = (props) => {
   
   const handleSave = (e) =>{
     e.preventDefault();
-    console.log(inputGroups)
+    console.log("Inside activityform", inputGroups)
   }
+
   
   const renderInputGroups = () => {
     return inputGroups.map((group, index) => (  
