@@ -11,10 +11,6 @@ import { changeDay } from '../../features/program/programSlice';
 // import ActivityTabList from '../ActivityTabList/ActivityTabList';
 
 
-
-
-
-
 const ProgramacionEvento = () => {
   
   const {currentDay}  = useSelector((state) => state.program);
@@ -32,7 +28,26 @@ const ProgramacionEvento = () => {
     setInputGroups([...inputGroups, { input0: currentDay, input1: '', input2: '', input3: '' }]);
   };
 
+//GETTING STUFF FROM LOCAL STORAGE??? IN PROGRESS
+  useEffect(() => {
+    if (currentDay) {
 
+    console.log("This is currentDay: ", currentDay)
+    console.log(`Program${currentDay}`)
+    const storedData = localStorage.getItem((`Program${currentDay}`));
+    if (storedData) {
+      console.log(storedData)
+      const parsedData = JSON.parse(storedData);
+      setInputGroups(parsedData);
+    }
+  }
+  }, []);
+
+
+
+
+
+  //BUTTONS
   const [tabCounter, setTabCounter] = useState(1)
   const [selectedButton, setSelectedButton] = useState(1);
   const [tabs, setTabs] = useState([
@@ -77,87 +92,7 @@ const ProgramacionEvento = () => {
     };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const dispatch = useDispatch();
-
-// const handleDay= (day) => {
-//   let activityArray =  [];
-//   console.log("SAVING AGAIN fdfafsafafasf")
-//   inputGroups.forEach(group => activityArray.push({dia:currentDay, inicio:group.input1, fin:group.input2, actividad:group.input3}))
-//   localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
-//   dispatch(changeDay(day))
-//   setInputGroups([{ input1: '', input2: '', input3: '' }])
-
-// }
-
-
-
-
-
-
-
 
 
   const handleInputChange = (index, inputName, value) => {
@@ -203,7 +138,7 @@ const dispatch = useDispatch();
   };
   
 
-  const handleSave = (e) =>{
+  const handleSave = () =>{
       const inputGroupsShowTrue =inputGroups.map((row, index) => {
       return {
         input1: row.input1 ? row.input1 : '00:00',
