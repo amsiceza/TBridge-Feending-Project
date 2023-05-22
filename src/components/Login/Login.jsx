@@ -53,7 +53,7 @@ const Login = () => {
       <br></br>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Correo electrónico:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
