@@ -23,8 +23,7 @@ const ProgramacionEvento = () => {
   };
 
   //BUTTONS
-  const [tabCounter, setTabCounter] = useState(1)
-  const [selectedButton, setSelectedButton] = useState(1); //Problem trying to set style
+  const [selectedButton, setSelectedButton] = useState(currentDay || 1); //Problem trying to set style
   const [tabs, setTabs] = useState([
     <button key={1} className={selectedButton == 1 ? 'btn-tab-day-selected' : 'btn-tab-day'} value={1} onClick={() => { handleTabChange(1) }}>
       DÍA 1
@@ -32,8 +31,9 @@ const ProgramacionEvento = () => {
   ]);
 
   const addDay = () => {
-    console.log(tabCounter)
-    const dayNumber = tabCounter + 1
+    console.log("tabs length to begin with: ", tabs.length)
+    const dayNumber = (tabs.length + 1)
+    console.log(dayNumber)
     const newTab = (
       <button
         key={dayNumber}
@@ -44,9 +44,8 @@ const ProgramacionEvento = () => {
         DÍA {dayNumber}
       </button>
     );
-    setTabCounter(tabCounter + 1)
     setTabs([...tabs, newTab]);
-    console.log(tabCounter, " and ", dayNumber)
+    console.log(dayNumber, " and length of tabs ", tabs.length)
   };
 
 
