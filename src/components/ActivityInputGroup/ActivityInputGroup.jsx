@@ -15,9 +15,9 @@ const ActivityInputGroup = ({
     <div key={index} className="inputs-div">
       {group.showText ? (
         <>
-          <span className="clock-text">{group.input1} </span>
-          <span className="clock-text">{group.input2} </span>
-          <span className="activity-text"> {group.input3} </span>
+          <span className="clock-text">{group.inicio} </span>
+          <span className="clock-text">{group.fin} </span>
+          <span className="activity-text"> {group.actividad} </span>
           <span className="activity-icons">
             <i type="button" onClick={() => handleConvertToInput(index)}>
               <HiOutlinePaintBrush />
@@ -34,8 +34,8 @@ const ActivityInputGroup = ({
             <input
               type="time"
               className=""
-              value={group.input1}
-              onChange={(e) => handleInputChange(index, 'input1', e.target.value)}
+              value={group.inicio}
+              onChange={(e) => handleInputChange(index, 'inicio', e.target.value)}
             />
             <HiChevronDown></HiChevronDown>
           </span>
@@ -44,16 +44,16 @@ const ActivityInputGroup = ({
             <HiClock></HiClock>
             <input
               type="time"
-              value={group.input2}
-              onChange={(e) => handleInputChange(index, 'input2', e.target.value)}
+              value={group.fin}
+              onChange={(e) => handleInputChange(index, 'fin', e.target.value)}
             />
             <HiChevronDown></HiChevronDown>
           </span>
 
           <input
             type="text"
-            value={group.input3}
-            onChange={(e) => handleInputChange(index, 'input3', e.target.value)}
+            value={group.actividad}
+            onChange={(e) => handleInputChange(index, 'actividad', e.target.value)}
           />
           <span className="activity-icons">
             <i type="button" onClick={() => handleConvertToText(index)}>
