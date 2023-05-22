@@ -46,14 +46,28 @@ function RecintoEvento() {
                   <div className="row">
                     <div className="inputs">
                       <label for="aforo">Aforo:</label>
-                      <input type="number" id="aforo" name="aforo" />
+                      <input
+                        type="number"
+                        id="aforo"
+                        name="aforo"
+                        min="0"
+                        step="1"
+                        placeholder="200"
+                      />
                     </div>
                     <div className="inputs">
-                      <label for="acessos">Nº de acessos</label>
-                      <input type="number" id="acessos" name="acessos" />
+                      <label for="accesos">Nº de accesos:</label>
+                      <input
+                        type="number"
+                        id="accesos"
+                        name="accesos"
+                        min="1"
+                        step="1"
+                        placeholder="20"
+                      />
                     </div>
                     <div className="inputs">
-                      <label for="discapacitados">Acesso discapacitados</label>
+                      <label for="discapacitados">Acceso discapacitados:</label>
                       <input
                         type="number"
                         id="discapacitados"
@@ -64,64 +78,100 @@ function RecintoEvento() {
 
                   <div className="row">
                     <div className="inputs">
-                      <label for="plantas">Nº de plantas</label>
-                      <input type="number" id="plantas" name="plantas" />
-                    </div>
-                    <div className="inputs">
-                      <label for="ascensor">Ascensor</label>
-                      <input type="number" id="ascensor" name="ascensor" />
-                    </div>
-                    <div className="inputs">
-                      <label for="aseos">Nº de aseos</label>
-                      <input type="number" id="aseos" name="aseos" />
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="inputs">
-                      <label for="wifi">WIFI</label>
-                      <input type="number" id="wifi" name="wifi" />
-                    </div>
-                    <div className="inputs">
-                      <label for="parking">Parking</label>
-                      <input type="number" id="parking" name="parking" />
-                    </div>
-                    <div className="inputs">
-                      <label for="transporte">Transporte publico</label>
-                      <input type="number" id="transporte" name="transporte" />
-                    </div>
-                  </div>
-
-                  <div className="row two">
-                    <div className="inputs">
-                      <label for="emergencia">
-                        Nº de salidas de emergencia
-                      </label>
-                      <input type="number" id="emergencia" name="emergencia" />
-                    </div>
-
-                    <div className="inputs">
-                      <label for="restauracion">Zona restauracion</label>
+                      <label for="plantas">Nº de plantas:</label>
                       <input
                         type="number"
-                        id="restauracion"
-                        name="restauracion"
+                        id="plantas"
+                        name="plantas"
+                        min="1"
+                        step="1"
+                        placeholder="4"
+                      />
+                    </div>
+                    <div className="inputs">
+                      <label for="ascensor">Ascensor:</label>
+                      <select name="privadas">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>                    </div>
+                    <div className="inputs">
+                      <label for="aseos">Nº de aseos:</label>
+                      <input
+                        type="number"
+                        id="aseos"
+                        name="aseos"
+                        min="1"
+                        step="1"
+                        placeholder="20"
                       />
                     </div>
                   </div>
 
                   <div className="row">
                     <div className="inputs">
-                      <label for="exterior">Zona exterior</label>
-                      <input type="number" id="exterior" name="exterior" />
-                    </div>
+                      <label for="wifi">WIFI:</label>
+                      <select name="wifi">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>                    </div>
                     <div className="inputs">
-                      <label for="interior">Zona interior</label>
-                      <input type="number" id="interior" name="interior" />
-                    </div>
+                      <label for="parking">Parking:</label>
+                      <select name="parking">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>                    </div>
                     <div className="inputs">
-                      <label for="privadas">Salas privadas</label>
-                      <input type="number" id="privadas" name="privadas" />
+                      <label for="transporte">Transporte público:</label>
+                      <select name="transporte">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>                    
+                      </div>
+                  </div>
+
+                  <div className="row two">
+                    <div className="inputs">
+                      <label for="emergencia">
+                        Nº de salidas de emergencia:
+                      </label>
+                      <input
+                        type="number"
+                        id="emergencia"
+                        name="emergencia"
+                        min="1"
+                        step="1"
+                        placeholder="20"
+                      />
+                    </div>
+
+                    <div className="inputs">
+                      <label for="restauracion">Zona restauración:</label>
+                      <select name="restauracion">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="inputs">
+                      <label for="exterior">Zona exterior:</label>
+                      <select name="exterior">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>                    </div>
+                    <div className="inputs">
+                      <label for="interior">Zona interior:</label>
+                      <select name="interior">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>                    </div>
+                    <div className="inputs">
+                      <label for="privadas">Salas privadas:</label>
+                      <select name="privadas">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>
                     </div>
                   </div>
                 </form>
@@ -129,23 +179,20 @@ function RecintoEvento() {
                   <BtnSave />
                 </div>
               </div>
-
-              
             </div>
-            
           </div>
         </div>
       </div>
       <div>
-                <div className="next-recinto-container">
-                  <p className="steps">3 Pasos de 3 Completados</p>
-                  <p className="points">● ● ●</p>
-                  <div className="btns">
-                    <BtnRevision />
-                    <BtnPublish />
-                  </div>
-                </div>
-              </div>
+        <div className="next-recinto-container">
+          <p className="steps">3 Pasos de 3 Completados</p>
+          <p className="points">● ● ●</p>
+          <div className="btns">
+            <BtnRevision />
+            <BtnPublish />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
