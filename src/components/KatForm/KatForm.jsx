@@ -20,8 +20,6 @@ const KatForm = () => {
   }, [currentDay])
 
 
-
-
   const [inputGroups, setInputGroups] = useState([
     { input0: currentDay, input1: '', input2: '', input3: '' }
   ]);
@@ -31,14 +29,124 @@ const KatForm = () => {
   };
 
 
+  const [tabCounter, setTabCounter] = useState(1)
+  const [selectedButton, setSelectedButton] = useState(1);
+  const [tabs, setTabs] = useState([
+  <button key={1} className={selectedButton == 1  ? 'btn-tab-day-selected' : 'btn-tab-day'} value={1}     onClick={() => {handleTabChange(1)}}>
+        DÍA 1
+  </button>
+  ]);
+  
+
+
+  const handleTabChange = (day) => {
+    setSelectedButton(day)
+    console.log("THIS IS DAY: ", day)
+    let activityArray =  [];
+    inputGroups.forEach(group => activityArray.push({dia:currentDay, inicio:group.input1, fin:group.input2, actividad:group.input3}))
+    localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
+    
+    setInputGroups([
+      {  input1: '', input2: '', input3: '' }
+    ]);
+    dispatch(changeDay(day))
+  }
+  
+
+
+  const addDay = () => {
+      console.log(tabCounter)
+        const dayNumber = tabCounter + 1
+        const newTab = (
+        <button 
+        key={dayNumber} 
+        className={currentDay == dayNumber  ? 'btn-tab-day-selected' : 'btn-tab-day'}      
+        value={dayNumber}
+        onClick={() => {handleTabChange(dayNumber)}}
+        >
+          DÍA {dayNumber}
+        </button>
+      );
+      setTabCounter(tabCounter+1)
+      setTabs([...tabs, newTab]);
+      console.log(tabCounter, " and ", dayNumber)
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 const dispatch = useDispatch();
 
-const handleDay= (day) => {
-  dispatch(changeDay(day))
-}
+// const handleDay= (day) => {
+//   let activityArray =  [];
+//   console.log("SAVING AGAIN fdfafsafafasf")
+//   inputGroups.forEach(group => activityArray.push({dia:currentDay, inicio:group.input1, fin:group.input2, actividad:group.input3}))
+//   localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
+//   dispatch(changeDay(day))
+//   setInputGroups([{ input1: '', input2: '', input3: '' }])
+
+// }
 
 
 
@@ -72,6 +180,9 @@ const handleDay= (day) => {
     setInputGroups(updatedGroups);
   };
   
+
+
+
 //It can be converted back to input fields:
 
   const handleConvertToInput = (index) => {
@@ -91,17 +202,17 @@ const handleDay= (day) => {
   const handleSave = (e) =>{
       const inputGroupsShowTrue =inputGroups.map((row, index) => {
       return {
-        input0: currentDay,
         input1: row.input1 ? row.input1 : '00:00',
         input2: row.input2 ? row.input2 : '00:00',
         input3: row.input3 ? row.input3 : 'N/A',
         showText: true}
       })
       setInputGroups(inputGroupsShowTrue)
-      e.preventDefault();
+      // e.preventDefault();
+      console.log("This is currentDay: ", currentDay) 
       let activityArray =  [];
-      inputGroups.forEach(group => activityArray.push({dia:group.input0, inicio:group.input1, fin:group.input2, actividad:group.input3}))
-      localStorage.setItem("Program", JSON.stringify(activityArray))
+      inputGroups.forEach(group => activityArray.push({dia:currentDay, inicio:group.input1, fin:group.input2, actividad:group.input3}))
+      localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
     }
   
 
@@ -109,6 +220,8 @@ const handleDay= (day) => {
 
   
   // Another component prints the actual form. Passing values
+ 
+  
   const renderInputGroups = () => {
     return inputGroups.map((group, index) => (
       <InputGroup
@@ -128,10 +241,6 @@ const handleDay= (day) => {
 
 
 
-
-
-
-
   return (
     <>
 
@@ -140,7 +249,14 @@ const handleDay= (day) => {
 
         <div className="tab">
 
-          <ActivityTabList></ActivityTabList>
+          {/* <ActivityTabList handleSave={handleSave}></ActivityTabList> */}
+
+
+       
+    {tabs}
+
+<button className="btn-tab-plus" onClick={addDay}><span><HiPlusSmall /></span></button>
+
           {/* <button className="btn-tab-day" >DÍA 1</button>
           <button className="btn-tab-day">DÍA 2</button>
           <button className="btn-tab-day" onClick={()=>(handleDay(3))}>DÍA 3</button>

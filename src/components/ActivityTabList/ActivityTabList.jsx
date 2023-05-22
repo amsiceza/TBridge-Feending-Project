@@ -5,26 +5,18 @@ import { HiPlusSmall } from 'react-icons/hi2';
 import "../../sass/input.scss"
 
 
-const ActivityTabList = () => {
+const ActivityTabList = (props) => {
 
 const {currentDay}  = useSelector((state) => state.program);
 const dispatch = useDispatch();
 
-const [tabCounter, setTabCounter] = useState(1)
+const [tabCounter, setTabCounter] = useState(2)
 const [selectedButton, setSelectedButton] = useState(1)
 const [tabs, setTabs] = useState([
 <button key={1} className={selectedButton == 1  ? 'btn-tab-day-selected' : 'btn-tab-day'} value={1}>
       DÍA 1
 </button>
 ]);
-
-
-useEffect (() => {
-  console.log(currentDay)
-  console.log("this is tabcounter", tabCounter)
-  setSelectedButton(currentDay)
-}, [currentDay])
-
 
 const handleTabChange= (day) => {
     console.log("changing tabs, ", day)
@@ -33,13 +25,14 @@ const handleTabChange= (day) => {
 
 const addDay = () => {
     console.log(tabCounter)
+
        const newTab = (
       <button 
       key={tabCounter} 
       className={currentDay == tabCounter  ? 'btn-tab-day-selected' : 'btn-tab-day'} 
        
       value={tabCounter}
-      onClick={() => handleTabChange(tabCounter)}
+      onClick={() => {handleTabChange(tabCounter)}}
       >
         DÍA {tabCounter}
       </button>
