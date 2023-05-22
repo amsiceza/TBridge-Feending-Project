@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Tlf from "../../assets/tlf.png";
 
@@ -11,6 +11,13 @@ import BtnRevision from "../../components/Buttons/BtnRevision";
 import "./RecintoEvento.scss";
 
 function RecintoEvento() {
+  const [imageName, setImageName] = useState("");
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setImageName(file.name);
+  };
+
   return (
     <>
       <div className="recinto-main-container">
@@ -32,9 +39,19 @@ function RecintoEvento() {
                 </div>
                 <div className="btn-first-lbl">
                   <div className="icons">
-                    <HiMagnifyingGlass />
+                    <label htmlFor="file-input" className="icon">
+                      <HiMagnifyingGlass />
+                      <input
+                        id="file-input"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        style={{ display: "none" }}
+                      />
+                    </label>
                     <HiOutlineTrash />
                   </div>
+                  {imageName && <p className="">{imageName}</p>}
                   <div>
                     <BtnSave />
                   </div>
@@ -68,11 +85,10 @@ function RecintoEvento() {
                     </div>
                     <div className="inputs">
                       <label for="discapacitados">Acceso discapacitados:</label>
-                      <input
-                        type="number"
-                        id="discapacitados"
-                        name="discapacitados"
-                      />
+                      <select name="privadas">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </select>
                     </div>
                   </div>
 
@@ -93,7 +109,8 @@ function RecintoEvento() {
                       <select name="privadas">
                         <option value="si">Si</option>
                         <option value="no">No</option>
-                      </select>                    </div>
+                      </select>{" "}
+                    </div>
                     <div className="inputs">
                       <label for="aseos">Nº de aseos:</label>
                       <input
@@ -113,20 +130,22 @@ function RecintoEvento() {
                       <select name="wifi">
                         <option value="si">Si</option>
                         <option value="no">No</option>
-                      </select>                    </div>
+                      </select>{" "}
+                    </div>
                     <div className="inputs">
                       <label for="parking">Parking:</label>
                       <select name="parking">
                         <option value="si">Si</option>
                         <option value="no">No</option>
-                      </select>                    </div>
+                      </select>{" "}
+                    </div>
                     <div className="inputs">
                       <label for="transporte">Transporte público:</label>
                       <select name="transporte">
                         <option value="si">Si</option>
                         <option value="no">No</option>
-                      </select>                    
-                      </div>
+                      </select>
+                    </div>
                   </div>
 
                   <div className="row two">
@@ -159,13 +178,15 @@ function RecintoEvento() {
                       <select name="exterior">
                         <option value="si">Si</option>
                         <option value="no">No</option>
-                      </select>                    </div>
+                      </select>{" "}
+                    </div>
                     <div className="inputs">
                       <label for="interior">Zona interior:</label>
                       <select name="interior">
                         <option value="si">Si</option>
                         <option value="no">No</option>
-                      </select>                    </div>
+                      </select>{" "}
+                    </div>
                     <div className="inputs">
                       <label for="privadas">Salas privadas:</label>
                       <select name="privadas">
