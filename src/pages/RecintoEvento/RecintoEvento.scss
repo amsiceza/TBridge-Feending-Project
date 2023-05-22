@@ -82,11 +82,11 @@
             margin-left: 35px;
             margin-top: 18px;
             .two{
-               gap: 7.2rem !important; 
+               gap: 7.5rem !important; 
             }
            .row{
             display: flex;
-            gap: 1.5rem;
+            gap: 1.9rem;
             .inputs{
                 display: flex;
                 flex-direction: column;
@@ -98,6 +98,14 @@
                     width: 120px;
                     height: 35px;
                     border: 0.857506px solid $gray-white;
+                    text-align: center;
+                }
+                select{
+                    width: 120px;
+                    height: 35px;
+                    border: 0.857506px solid $gray-white;
+                    text-align: center;
+                    border-radius: 8px;
                 }
             }
            }
@@ -130,3 +138,5 @@
             gap: 1rem;
         }
 }
+
+
