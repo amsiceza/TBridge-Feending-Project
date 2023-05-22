@@ -8,6 +8,7 @@ import BtnNext from '../Buttons/BtnNext';
 import InputGroup from '../ActivityInputGroup/ActivityInputGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDay } from '../../features/program/programSlice';
+import ActivityTabList from '../ActivityTabList/ActivityTabList';
 
 
 const KatForm = () => {
@@ -22,11 +23,11 @@ const KatForm = () => {
 
 
   const [inputGroups, setInputGroups] = useState([
-    { input1: '', input2: '', input3: '' }
+    { input0: currentDay, input1: '', input2: '', input3: '' }
   ]);
 
   const handleAddInputGroup = () => {
-    setInputGroups([...inputGroups, { input1: '', input2: '', input3: '' }]);
+    setInputGroups([...inputGroups, { input0: currentDay, input1: '', input2: '', input3: '' }]);
   };
 
 
@@ -38,6 +39,8 @@ const dispatch = useDispatch();
 const handleDay= (day) => {
   dispatch(changeDay(day))
 }
+
+
 
 
 
@@ -84,9 +87,11 @@ const handleDay= (day) => {
     setInputGroups(updatedGroups);
   };
   
+
   const handleSave = (e) =>{
       const inputGroupsShowTrue =inputGroups.map((row, index) => {
       return {
+        input0: currentDay,
         input1: row.input1 ? row.input1 : '00:00',
         input2: row.input2 ? row.input2 : '00:00',
         input3: row.input3 ? row.input3 : 'N/A',
@@ -94,7 +99,9 @@ const handleDay= (day) => {
       })
       setInputGroups(inputGroupsShowTrue)
       e.preventDefault();
-      console.log( "Inside katform ", inputGroups)
+      let activityArray =  [];
+      inputGroups.forEach(group => activityArray.push({dia:group.input0, inicio:group.input1, fin:group.input2, actividad:group.input3}))
+      localStorage.setItem("Program", JSON.stringify(activityArray))
     }
   
 
@@ -132,10 +139,12 @@ const handleDay= (day) => {
         <h3>Programación del evento</h3>
 
         <div className="tab">
-          <button className="btn-tab-day" >DÍA 1</button>
+
+          <ActivityTabList></ActivityTabList>
+          {/* <button className="btn-tab-day" >DÍA 1</button>
           <button className="btn-tab-day">DÍA 2</button>
           <button className="btn-tab-day" onClick={()=>(handleDay(3))}>DÍA 3</button>
-          <button className="btn-tab-plus"><span><HiPlusSmall /></span></button>
+          <button className="btn-tab-plus"><span><HiPlusSmall /></span></button> */}
         </div>
 
         <div className="activity-form">
