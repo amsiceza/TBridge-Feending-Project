@@ -171,6 +171,17 @@
     height: 30px;
 }
 
+.btn-tab-day-selected {
+    @extend %basic;
+    width: 239px;
+    height: 30px;
+    color:  black;
+    background-color: $white-gray;
+    border-color:$white-gray;
+    border-radius: 10px 10px 0px 0px;
+
+}
+
 .btn-tab-plus {
     @extend %btn-tab;
     width: 49px;
