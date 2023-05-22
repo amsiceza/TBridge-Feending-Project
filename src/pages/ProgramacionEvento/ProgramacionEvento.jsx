@@ -26,15 +26,13 @@ const ProgramacionEvento = () => {
   //BUTTONS
   const [selectedButton, setSelectedButton] = useState(1); //Problem trying to set style
   const [tabs, setTabs] = useState([
-    <button key={1} className={selectedButton == 1 ? 'btn-tab-day-selected' : 'btn-tab-day'} value={1} onClick={() => { handleTabChange(1) }}>
+    <button key={1} className={'btn-tab-day-selected btn-tab-day'} value={1} onClick={() => { handleTabChange(1) }}>
       DÍA 1
     </button>
   ]);
 
   const addDay = () => {
-    console.log("tabs length to begin with: ", tabs.length)
     const dayNumber = (tabs.length + 1)
-    console.log(dayNumber)
     const newTab = (
       <button
         key={dayNumber}
@@ -46,7 +44,6 @@ const ProgramacionEvento = () => {
       </button>
     );
     setTabs([...tabs, newTab]);
-    console.log(dayNumber, " and length of tabs ", tabs.length)
   };
 
 // Setting style
@@ -60,11 +57,16 @@ const buttonStyle = (dayNumber) => {
 }
 
   //Clicking on different day tabs
-  const handleTabChange = (day) => {
-    setSelectedButton(day)
-    console.log("inside handletabchange!!")
-    console.log(typeof day, day)
-    console.log(typeof selectedButton, selectedButton)
+  const handleTabChange = ( day) => {
+    //ClassName IS IMMUTABLE AND CAN'T BE CHANGED!!! MUST USE good old JS DOM manipulation:
+    const buttons = document.querySelectorAll('.btn-tab-day');
+    buttons.forEach((button) => {
+      if (button.value === day.toString()) {
+        button.classList.add('btn-tab-day-selected');
+      } else {
+        button.classList.remove('btn-tab-day-selected');
+      }
+    });
     let storageData = JSON.parse(localStorage.getItem(`Program${day}`))
     if (storageData) {
       setInputGroups(storageData)  //print existing
@@ -77,7 +79,6 @@ const buttonStyle = (dayNumber) => {
   const handleInputChange = (index, inputName, value) => {
     const updatedGroups = [...inputGroups];
     updatedGroups[index][inputName] = value;
-    console.log("updatedgroups,", updatedGroups)
     setInputGroups(updatedGroups);
   };
 

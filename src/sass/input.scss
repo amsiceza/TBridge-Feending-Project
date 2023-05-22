@@ -1,6 +1,10 @@
 
 @import "../colors.scss";
 
+input {
+    padding: 0 1%;
+}
+
 
   //This controls the invisible date symbol that onclick opens the calendar
   input[type="date"]::-webkit-calendar-picker-indicator {
