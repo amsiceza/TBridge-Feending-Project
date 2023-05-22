@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { register } from "../../features/auth/authSlice";
 
 const Register = () => {
+  
+
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",

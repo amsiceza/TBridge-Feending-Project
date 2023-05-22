@@ -10,8 +10,7 @@
 }
 .recinto-main-container {
   display: flex;
-  width: 70%;
-  height: 60%;
+  width: 90%;
   background: $white-l-gray;
   border-radius: 10px;
   margin-left: 5%;
@@ -20,7 +19,7 @@
 
     .recinto-mvl{
         img{
-            height: 550px;
+            height: 680px;
             width: auto;
         }
     }
@@ -39,7 +38,7 @@
             margin-bottom: 8px;
         }
         .mapa-text{
-            font-size: 16px;
+            font-size: 15px;
             margin-right: 2rem;
         }
         .btn-first-lbl{
@@ -57,4 +56,86 @@
             }
         }
     }
+
+
+    .second-label-recinto{
+        margin-right: 1.2rem;
+        background-color: $ultra-white;
+        align-items: center;
+        padding: 1.2rem;
+        border-radius: 10px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        .btn{
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+
+        form{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-left: 35px;
+            margin-top: 18px;
+            .two{
+               gap: 7.5rem !important; 
+            }
+           .row{
+            display: flex;
+            gap: 1.9rem;
+            .inputs{
+                display: flex;
+                flex-direction: column;
+                
+                label{
+                    font-size: 15px;
+                }
+                input{
+                    width: 120px;
+                    height: 35px;
+                    border: 0.857506px solid $gray-white;
+                    text-align: center;
+                }
+                select{
+                    width: 120px;
+                    height: 35px;
+                    border: 0.857506px solid $gray-white;
+                    text-align: center;
+                    border-radius: 8px;
+                }
+            }
+           }
+        }
+    }
 }
+
+.next-recinto-container{
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+    margin-right: 5%;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+
+        .steps{
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .points{
+            letter-spacing: 6px;
+            font-size: 13px;
+            color: $gray;
+
+        }
+        .btns{
+            display: flex;
+            gap: 1rem;
+        }
+}
+
+
