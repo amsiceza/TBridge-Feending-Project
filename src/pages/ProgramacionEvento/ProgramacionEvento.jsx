@@ -12,11 +12,13 @@ import { changeDay } from '../../features/program/programSlice';
 
 const ProgramacionEvento = () => {
 
+  let programDayOne = JSON.parse(localStorage.getItem(`Program1`))
+
   const dispatch = useDispatch();
   const { currentDay } = useSelector((state) => state.program);
 
-  const [inputGroups, setInputGroups] = useState([
-    { dia: currentDay, inicio: '', fin: '', actividad: '' }
+  const [inputGroups, setInputGroups] = useState( programDayOne || 
+    [ { dia: currentDay, inicio: '', fin: '', actividad: '' }
   ]);
 
   const handleAddInputGroup = () => {
@@ -24,8 +26,7 @@ const ProgramacionEvento = () => {
   };
 
   //BUTTONS
-  const [selectedButton, setSelectedButton] = useState(1); //Problem trying to set style
-  const [tabs, setTabs] = useState([
+    const [tabs, setTabs] = useState([
     <button key={1} className={'btn-tab-day-selected btn-tab-day'} value={1} onClick={() => { handleTabChange(1) }}>
       DÍA 1
     </button>
@@ -36,7 +37,7 @@ const ProgramacionEvento = () => {
     const newTab = (
       <button
         key={dayNumber}
-        className= {buttonStyle(dayNumber)}
+        className= 'btn-tab-day'
         value={dayNumber}
         onClick={() => { handleTabChange(dayNumber) }}
       >
@@ -45,16 +46,6 @@ const ProgramacionEvento = () => {
     );
     setTabs([...tabs, newTab]);
   };
-
-// Setting style
-
-const buttonStyle = (dayNumber) => {
-  if (selectedButton == dayNumber) {
-    return 'btn-tab-day-selected'
-  } else {
-    return'btn-tab-day'
-  }
-}
 
   //Clicking on different day tabs
   const handleTabChange = ( day) => {
