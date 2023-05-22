@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {HiPlusSmall} from "react-icons/hi2"
+import { HiPlusSmall } from "react-icons/hi2"
 import "./ProgramacionEvento.scss"
 import "../../sass/input.scss"
 import BtnAddActivity from '../../components/Buttons/BtnAddActivity'
@@ -8,17 +8,11 @@ import BtnNext from '../../components/Buttons/BtnNext';
 import ActivityInputGroup from '../../components/ActivityInputGroup/ActivityInputGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDay } from '../../features/program/programSlice';
-// import ActivityTabList from '../ActivityTabList/ActivityTabList';
-
 
 const ProgramacionEvento = () => {
-  
-  const {currentDay}  = useSelector((state) => state.program);
 
-  useEffect (() => {
-    console.log(currentDay)
-  }, [currentDay])
-
+  const dispatch = useDispatch();
+  const { currentDay } = useSelector((state) => state.program);
 
   const [inputGroups, setInputGroups] = useState([
     { dia: currentDay, inicio: '', fin: '', actividad: '' }
@@ -28,74 +22,45 @@ const ProgramacionEvento = () => {
     setInputGroups([...inputGroups, { dia: currentDay, inicio: '', fin: '', actividad: '' }]);
   };
 
-//GETTING STUFF FROM LOCAL STORAGE??? IN PROGRESS
- 
-// const getFromStorage = (day) => {
-//   if (currentDay) {
-//     console.log(`Program${day}`)
-//     const storedData = JSON.parse(localStorage.getItem((`Program${day}`)));
-//     if (storedData && currentDay === day) {
-//       console.log(storedData)
-//       setInputGroups(storedData);
-//     }
-// }
-// }
-
-// useEffect(() => {
-//   if (currentDay) getFromStorage(currentDay);
-//   }, []);
-
-
   //BUTTONS
   const [tabCounter, setTabCounter] = useState(1)
-  const [selectedButton, setSelectedButton] = useState(1);
+  const [selectedButton, setSelectedButton] = useState(1); //Problem trying to set style
   const [tabs, setTabs] = useState([
-  <button key={1} className={selectedButton == 1  ? 'btn-tab-day-selected' : 'btn-tab-day'} value={1}     onClick={() => {handleTabChange(1)}}>
-        DÍA 1
-  </button>
+    <button key={1} className={selectedButton == 1 ? 'btn-tab-day-selected' : 'btn-tab-day'} value={1} onClick={() => { handleTabChange(1) }}>
+      DÍA 1
+    </button>
   ]);
-  
+
+  const addDay = () => {
+    console.log(tabCounter)
+    const dayNumber = tabCounter + 1
+    const newTab = (
+      <button
+        key={dayNumber}
+        className={currentDay == dayNumber ? 'btn-tab-day-selected' : 'btn-tab-day'}
+        value={dayNumber}
+        onClick={() => { handleTabChange(dayNumber) }}
+      >
+        DÍA {dayNumber}
+      </button>
+    );
+    setTabCounter(tabCounter + 1)
+    setTabs([...tabs, newTab]);
+    console.log(tabCounter, " and ", dayNumber)
+  };
 
 
+  //Clicking on different day tabs
   const handleTabChange = (day) => {
-    // setSelectedButton(day)
-    console.log(inputGroups)
-    console.log("THIS IS DAY: ", day)
-    console.log("This is currentday", currentDay)
     let storageData = JSON.parse(localStorage.getItem(`Program${day}`))
     console.log(storageData)
-
     if (storageData) {
-      setInputGroups(storageData)
+      setInputGroups(storageData)  //print existing
     } else {
-      setInputGroups([ {  inicio: '', fin: '', actividad: '' } ])
+      setInputGroups([{ inicio: '', fin: '', actividad: '' }]) //Empty form
     }
     dispatch(changeDay(day))
   }
-  
-
-
-  const addDay = () => {
-      console.log(tabCounter)
-        const dayNumber = tabCounter + 1
-        const newTab = (
-        <button 
-        key={dayNumber} 
-        className={currentDay == dayNumber  ? 'btn-tab-day-selected' : 'btn-tab-day'}      
-        value={dayNumber}
-        onClick={() => {handleTabChange(dayNumber)}}
-        >
-          DÍA {dayNumber}
-        </button>
-      );
-      setTabCounter(tabCounter+1)
-      setTabs([...tabs, newTab]);
-      console.log(tabCounter, " and ", dayNumber)
-    };
-
-
-const dispatch = useDispatch();
-
 
   const handleInputChange = (index, inputName, value) => {
     const updatedGroups = [...inputGroups];
@@ -104,14 +69,12 @@ const dispatch = useDispatch();
     setInputGroups(updatedGroups);
   };
 
-
   //The input can be converted to text by clicking the check icon
-  
   const handleConvertToText = (index) => {
     const updatedGroups = [...inputGroups];
     const group = updatedGroups[index];
     const convertedGroup = {
-     inicio: group.inicio ? group.inicio : '00:00',
+      inicio: group.inicio ? group.inicio : '00:00',
       fin: group.fin ? group.fin : '00:00',
       actividad: group.actividad ? group.actividad : 'N/A',
       showText: true
@@ -119,61 +82,52 @@ const dispatch = useDispatch();
     updatedGroups[index] = convertedGroup;
     setInputGroups(updatedGroups);
   };
-  
 
-
-
-//It can be converted back to input fields:
-
+  //It can be converted back to input fields by clicking the pen
   const handleConvertToInput = (index) => {
     const updatedGroups = [...inputGroups];
     const group = updatedGroups[index];
     updatedGroups[index] = { ...group, showText: false };
     setInputGroups(updatedGroups);
   };
-  
+
   const deleteActivity = (index) => {
     const updatedGroups = [...inputGroups];
     updatedGroups.splice(index, 1);
     setInputGroups(updatedGroups);
   };
-  
 
-  const handleSave = () =>{
-      const inputGroupsShowTrue =inputGroups.map((row, index) => {
+  const handleSave = () => {
+    const inputGroupsShowTrue = inputGroups.map((row, index) => {
       return {
-       inicio: row.inicio ? row.inicio : '00:00',
+        inicio: row.inicio ? row.inicio : '00:00',
         fin: row.fin ? row.fin : '00:00',
         actividad: row.actividad ? row.actividad : 'N/A',
-        showText: true}
-      })
-      setInputGroups(inputGroupsShowTrue)
-      let activityArray =  [];
-      inputGroups.forEach(group => activityArray.push({dia:currentDay, inicio:group.inicio, fin:group.fin, actividad:group.actividad}))
-      localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
-    }
-  
+        showText: true
+      }
+    })
+    setInputGroups(inputGroupsShowTrue)
+    let activityArray = [];
+    inputGroups.forEach(group => activityArray.push({ dia: currentDay, inicio: group.inicio, fin: group.fin, actividad: group.actividad }))
+    localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
+  }
 
-  // Another component prints the actual form. Passing values
- 
-  
+
+  // Another component prints the actual form fields. Passing values
   const renderInputGroups = () => {
     return inputGroups.map((group, index) => (
       <ActivityInputGroup
-      key={index}
-      group={group}
-      index={index}
-      // handleSave={handleSave}
-      handleInputChange={handleInputChange}
-      handleConvertToText={handleConvertToText}
-      handleConvertToInput={handleConvertToInput}
-      deleteActivity={deleteActivity}
-    />
-  ));
-};
-
-
-
+        key={index}
+        group={group}
+        index={index}
+        // handleSave={handleSave}
+        handleInputChange={handleInputChange}
+        handleConvertToText={handleConvertToText}
+        handleConvertToInput={handleConvertToInput}
+        deleteActivity={deleteActivity}
+      />
+    ));
+  };
 
 
   return (
@@ -184,22 +138,12 @@ const dispatch = useDispatch();
 
         <div className="tab">
 
-          {/* <ActivityTabList handleSave={handleSave}></ActivityTabList> */}
+          {tabs}
 
+          <button className="btn-tab-plus" onClick={addDay}><span><HiPlusSmall /></span></button>
 
-       
-    {tabs}
-
-<button className="btn-tab-plus" onClick={addDay}><span><HiPlusSmall /></span></button>
-
-          {/* <button className="btn-tab-day" >DÍA 1</button>
-          <button className="btn-tab-day">DÍA 2</button>
-          <button className="btn-tab-day" onClick={()=>(handleDay(3))}>DÍA 3</button>
-          <button className="btn-tab-plus"><span><HiPlusSmall /></span></button> */}
         </div>
-
         <div className="activity-form">
-
           <span className="inputs-div title">
             <span className="clock-text">Hora inicio</span>
             <span className="clock-text">Hora final</span>
