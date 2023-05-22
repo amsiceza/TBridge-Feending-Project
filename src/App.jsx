@@ -8,6 +8,7 @@ import KatTest from './components/Buttons/KatTest/KatTest';
 import RecintoEvento from './pages/RecintoEvento/RecintoEvento';
 import Register from './components/Register/Register';
 import Header from "./components/Header/Header";
+import Asistentes from "./components/Asistentes/Asistentes";
 
 function App() {
   const token = localStorage.getItem('token'); // Obtener el token del local storage
@@ -32,6 +33,7 @@ function App() {
               <Route path="/katform" element={<KatForm />} />
               <Route path="/recinto" element={<RecintoEvento />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/asistentes" element={<Asistentes />} />
             </Routes>
           </div>
         </div>
