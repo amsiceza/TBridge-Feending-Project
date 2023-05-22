@@ -1,9 +1,9 @@
 import React from 'react';
 import {HiOutlineTrash, HiOutlineCheck, HiOutlinePaintBrush, HiClock, HiChevronDown, HiPlusSmall, HiPlus} from "react-icons/hi2"
-import "../KatForm/KatForm.scss"
+import "../../pages/ProgramacionEvento/ProgramacionEvento.scss"
 
 
-const InputGroup = ({
+const ActivityInputGroup = ({
   group,
   index,
   handleInputChange,
@@ -70,4 +70,4 @@ const InputGroup = ({
   );
 };
 
-export default InputGroup;
+export default ActivityInputGroup;

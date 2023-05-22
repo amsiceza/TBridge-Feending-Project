@@ -8,6 +8,9 @@ const initialState = {
 export const changeDay = createAsyncThunk("program/changeDay", async (day) => {
   console.log ("inside changeDaySlice, the day is ", day)
    return day;
+
+
+   
   });
 
 
