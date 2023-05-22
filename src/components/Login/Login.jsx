@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Login.scss';
 
+import Hands from "../../assets/hands.png"
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -48,33 +50,25 @@ const Login = () => {
 
   return (
     
-    <div className="container">
-      <h2>Inicia sesión</h2>
-      <br></br>
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <div className="title-login">
+      <img src={Hands} alt="" />
+      <h1 className='login-word'>Feevents</h1>
+      </div>
+
+      <form onSubmit={handleSubmit} className='formLogin'>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
+        <hr />
+          <input type="email" id="email" value={email} onChange={handleEmailChange}
             required
-            className="input-style"
+            className="input-style" placeholder="  Escribe tu email"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-            className="input-style"
-          />
+          <input type="password" id="password" value={password} onChange={handlePasswordChange}
+         required  className="input-style" placeholder="  Escribe tu contraseña" />
         </div>
-        <button type="primary"  htmlType="submit" className='button-login'>Iniciar sesión</button>
+        <button className="btn-login" type="submit">Login</button>
       </form>
     </div>
   );
