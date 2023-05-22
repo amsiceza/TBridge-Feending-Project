@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { HiPlusSmall } from "react-icons/hi2"
 import "./ProgramacionEvento.scss"
 import "../../sass/input.scss"
+import "../../sass/buttons.scss"
 import BtnAddActivity from '../../components/Buttons/BtnAddActivity'
 import BtnSave from '../../components/Buttons/BtnSave';
 import BtnNext from '../../components/Buttons/BtnNext';
@@ -23,7 +24,7 @@ const ProgramacionEvento = () => {
   };
 
   //BUTTONS
-  const [selectedButton, setSelectedButton] = useState(currentDay || 1); //Problem trying to set style
+  const [selectedButton, setSelectedButton] = useState(1); //Problem trying to set style
   const [tabs, setTabs] = useState([
     <button key={1} className={selectedButton == 1 ? 'btn-tab-day-selected' : 'btn-tab-day'} value={1} onClick={() => { handleTabChange(1) }}>
       DÍA 1
@@ -37,7 +38,7 @@ const ProgramacionEvento = () => {
     const newTab = (
       <button
         key={dayNumber}
-        className={currentDay == dayNumber ? 'btn-tab-day-selected' : 'btn-tab-day'}
+        className= {buttonStyle(dayNumber)}
         value={dayNumber}
         onClick={() => { handleTabChange(dayNumber) }}
       >
@@ -48,11 +49,23 @@ const ProgramacionEvento = () => {
     console.log(dayNumber, " and length of tabs ", tabs.length)
   };
 
+// Setting style
+
+const buttonStyle = (dayNumber) => {
+  if (selectedButton == dayNumber) {
+    return 'btn-tab-day-selected'
+  } else {
+    return'btn-tab-day'
+  }
+}
 
   //Clicking on different day tabs
   const handleTabChange = (day) => {
+    setSelectedButton(day)
+    console.log("inside handletabchange!!")
+    console.log(typeof day, day)
+    console.log(typeof selectedButton, selectedButton)
     let storageData = JSON.parse(localStorage.getItem(`Program${day}`))
-    console.log(storageData)
     if (storageData) {
       setInputGroups(storageData)  //print existing
     } else {
