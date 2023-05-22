@@ -21,30 +21,29 @@ const ProgramacionEvento = () => {
 
 
   const [inputGroups, setInputGroups] = useState([
-    { input0: currentDay, input1: '', input2: '', input3: '' }
+    { dia: currentDay, inicio: '', fin: '', actividad: '' }
   ]);
 
   const handleAddInputGroup = () => {
-    setInputGroups([...inputGroups, { input0: currentDay, input1: '', input2: '', input3: '' }]);
+    setInputGroups([...inputGroups, { dia: currentDay, inicio: '', fin: '', actividad: '' }]);
   };
 
 //GETTING STUFF FROM LOCAL STORAGE??? IN PROGRESS
-  useEffect(() => {
-    if (currentDay) {
+ 
+// const getFromStorage = (day) => {
+//   if (currentDay) {
+//     console.log(`Program${day}`)
+//     const storedData = JSON.parse(localStorage.getItem((`Program${day}`)));
+//     if (storedData && currentDay === day) {
+//       console.log(storedData)
+//       setInputGroups(storedData);
+//     }
+// }
+// }
 
-    console.log("This is currentDay: ", currentDay)
-    console.log(`Program${currentDay}`)
-    const storedData = localStorage.getItem((`Program${currentDay}`));
-    if (storedData) {
-      console.log(storedData)
-      const parsedData = JSON.parse(storedData);
-      setInputGroups(parsedData);
-    }
-  }
-  }, []);
-
-
-
+// useEffect(() => {
+//   if (currentDay) getFromStorage(currentDay);
+//   }, []);
 
 
   //BUTTONS
@@ -59,15 +58,18 @@ const ProgramacionEvento = () => {
 
 
   const handleTabChange = (day) => {
-    setSelectedButton(day)
+    // setSelectedButton(day)
+    console.log(inputGroups)
     console.log("THIS IS DAY: ", day)
-    let activityArray =  [];
-    inputGroups.forEach(group => activityArray.push({dia:currentDay, inicio:group.input1, fin:group.input2, actividad:group.input3}))
-    localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
-    
-    setInputGroups([
-      {  input1: '', input2: '', input3: '' }
-    ]);
+    console.log("This is currentday", currentDay)
+    let storageData = JSON.parse(localStorage.getItem(`Program${day}`))
+    console.log(storageData)
+
+    if (storageData) {
+      setInputGroups(storageData)
+    } else {
+      setInputGroups([ {  inicio: '', fin: '', actividad: '' } ])
+    }
     dispatch(changeDay(day))
   }
   
@@ -100,7 +102,6 @@ const dispatch = useDispatch();
     updatedGroups[index][inputName] = value;
     console.log("updatedgroups,", updatedGroups)
     setInputGroups(updatedGroups);
-    console.log(inputGroups)
   };
 
 
@@ -110,9 +111,9 @@ const dispatch = useDispatch();
     const updatedGroups = [...inputGroups];
     const group = updatedGroups[index];
     const convertedGroup = {
-      input1: group.input1 ? group.input1 : '00:00',
-      input2: group.input2 ? group.input2 : '00:00',
-      input3: group.input3 ? group.input3 : 'N/A',
+     inicio: group.inicio ? group.inicio : '00:00',
+      fin: group.fin ? group.fin : '00:00',
+      actividad: group.actividad ? group.actividad : 'N/A',
       showText: true
     };
     updatedGroups[index] = convertedGroup;
@@ -141,23 +142,18 @@ const dispatch = useDispatch();
   const handleSave = () =>{
       const inputGroupsShowTrue =inputGroups.map((row, index) => {
       return {
-        input1: row.input1 ? row.input1 : '00:00',
-        input2: row.input2 ? row.input2 : '00:00',
-        input3: row.input3 ? row.input3 : 'N/A',
+       inicio: row.inicio ? row.inicio : '00:00',
+        fin: row.fin ? row.fin : '00:00',
+        actividad: row.actividad ? row.actividad : 'N/A',
         showText: true}
       })
       setInputGroups(inputGroupsShowTrue)
-      // e.preventDefault();
-      console.log("This is currentDay: ", currentDay) 
       let activityArray =  [];
-      inputGroups.forEach(group => activityArray.push({dia:currentDay, inicio:group.input1, fin:group.input2, actividad:group.input3}))
+      inputGroups.forEach(group => activityArray.push({dia:currentDay, inicio:group.inicio, fin:group.fin, actividad:group.actividad}))
       localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
     }
   
 
-
-
-  
   // Another component prints the actual form. Passing values
  
   
