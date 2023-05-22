@@ -12,6 +12,13 @@
   display: flex;
   align-items: center;
   margin-bottom: 26px;
+  label{
+    color:$green;
+    width: 120px; // Ajusta el ancho según tus necesidades
+    text-align: right;
+    margin-right: 23px; 
+    font-size: 17px;
+  }
 }
 
 .input-style {
@@ -28,11 +35,5 @@
  background-color: $ultra-white;
 }
 
-label{
-  color:$green;
-  width: 120px; // Ajusta el ancho según tus necesidades
-  text-align: right;
-  margin-right: 23px; 
-  font-size: 17px;
-}
+
 
