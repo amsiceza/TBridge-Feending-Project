@@ -10,6 +10,8 @@ import ActivityInputGroup from '../../components/ActivityInputGroup/ActivityInpu
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDay, createProgram } from '../../features/program/programSlice';
 import { useNavigate } from 'react-router-dom'
+import {createEvent} from "../../features/event/eventSlice"
+
 
 const ProgramacionEvento = () => {
   let navigate = useNavigate();
@@ -149,10 +151,49 @@ const handleNext = () => {
     ));
   };
 
-const testClick = () => {
-  let data = JSON.parse(localStorage.getItem("programacion"))
-  dispatch((createProgram(data)))
-}
+
+  // FOR LAST PAGE - send program data
+// const testClick = () => {
+//   let data = JSON.parse(localStorage.getItem("programacion"))
+//   dispatch((createProgram(data)))
+// }
+
+//SEND EVENT DATA:
+
+// const testClick2 = () => {
+//   const storedEvent = JSON.parse(localStorage.getItem("event"))
+//   console.log(storedEvent)
+//     const dateTimeconverter = (dateString, timeString) => {
+//     const [year, month, day] = dateString.split("-");
+//     const [hours, minutes] = timeString.split(":");
+//     // JavaScript's Date object uses a zero-based index for the month
+//     const combinedDate = new Date(year, month - 1, day, hours, minutes);
+//     return combinedDate
+//   }
+  
+//   // const storedEvent = JSON.parse(localStorage.getItem("event"))
+//   const eventData = {
+//     nombre: storedEvent.eventName,
+//     descripcion: storedEvent.eventDescription,
+//     location: storedEvent.eventLocation,
+//     inicio: dateTimeconverter(storedEvent.eventStartDate, storedEvent.eventStartTime),
+//     fin: dateTimeconverter(storedEvent.eventEndDate, storedEvent.eventEndTime),
+//     direccion: {
+//       calle: storedEvent.eventLocation, // THIS IS WRONG, CHANGE TO LUGAR?? on backend
+//       localidad: storedEvent.eventCity, 
+//       provincia: storedEvent.eventProvince,
+//     }
+//   }
+//   console.log(eventData)
+  
+//   dispatch(createEvent(eventData))
+  
+// }
+
+
+
+
+
 
   return (
     <>
@@ -197,7 +238,8 @@ const testClick = () => {
         </div>
       </div>
 
-      <button onClick={testClick}>Test</button>
+      {/* <button onClick={testClick}>Test send to backend</button> */}
+      {/* <button onClick={testClick2}>Test send to backend event page</button> */}
     </>
   )
 }
