@@ -3,9 +3,9 @@ import "../../sass/buttons.scss"
 import { HiChevronRight} from "react-icons/hi2"
 
 
-const BtnNext = () => {
+const BtnNext = (props) => {
   return (
-    <><button type="button" className="btn-gray-md"><span>Siguiente<HiChevronRight></HiChevronRight></span></button></>
+    <><button type="button" className="btn-gray-md" onClick={props.onClick}><span>Siguiente<HiChevronRight></HiChevronRight></span></button></>
   )
 }
 
