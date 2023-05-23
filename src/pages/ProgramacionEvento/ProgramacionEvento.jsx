@@ -8,7 +8,7 @@ import BtnSave from '../../components/Buttons/BtnSave';
 import BtnNext from '../../components/Buttons/BtnNext';
 import ActivityInputGroup from '../../components/ActivityInputGroup/ActivityInputGroup';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeDay } from '../../features/program/programSlice';
+import { changeDay, createProgram } from '../../features/program/programSlice';
 import { useNavigate } from 'react-router-dom'
 
 const ProgramacionEvento = () => {
@@ -150,6 +150,11 @@ const handleNext = () => {
     ));
   };
 
+const testClick = () => {
+  dispatch((createProgram()))
+}
+
+
 
   return (
     <>
@@ -194,6 +199,7 @@ const handleNext = () => {
         </div>
       </div>
 
+      <button onClick={testClick}>Test</button>
     </>
   )
 }
