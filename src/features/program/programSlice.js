@@ -12,16 +12,7 @@ export const changeDay = createAsyncThunk("program/changeDay", async (day) => {
    return day;
   });
 
-export const createProgram = createAsyncThunk("program/createProgram", async() => {
-  let data = {
-    dia: 1,
-    inicio: "2023-05-23T10:00:00.000+00:00",
-    fin: "2023-05-23T10:00:00.000+00:00",
-    actividad: "Fun activity"
-  }
-
-
-
+export const createProgram = createAsyncThunk("program/createProgram", async(data) => {
   try {
     return await programService.createProgram(data);   
   } catch (error) {

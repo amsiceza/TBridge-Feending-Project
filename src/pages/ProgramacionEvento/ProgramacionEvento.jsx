@@ -141,7 +141,6 @@ const handleNext = () => {
         key={index}
         group={group}
         index={index}
-        // handleSave={handleSave}
         handleInputChange={handleInputChange}
         handleConvertToText={handleConvertToText}
         handleConvertToInput={handleConvertToInput}
@@ -151,10 +150,9 @@ const handleNext = () => {
   };
 
 const testClick = () => {
-  dispatch((createProgram()))
+  let data = JSON.parse(localStorage.getItem("programacion"))
+  dispatch((createProgram(data)))
 }
-
-
 
   return (
     <>
