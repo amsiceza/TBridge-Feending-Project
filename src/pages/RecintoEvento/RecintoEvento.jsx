@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Tlf from "../../assets/tlf.png";
 
@@ -11,6 +11,57 @@ import BtnRevision from "../../components/Buttons/BtnRevision";
 import "./RecintoEvento.scss";
 
 function RecintoEvento() {
+  // Estado que recoge todos los inputs del recinto
+  const [formData, setFormData] = useState({
+    aforo: '',
+    accesos: '',
+    discapacitados: 'true',
+    plantas: '',
+    ascensor: 'true',
+    aseos: '',
+    wifi: 'true',
+    parking: 'true',
+    transporte: 'true',
+    emergencia: '',
+    restauracion: 'true',
+    exterior: 'true',
+    interior: 'true',
+    privadas: 'true',
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSaveForm = (event) => {
+    event.preventDefault();
+    const jsonData = JSON.stringify(formData);
+    localStorage.setItem('formData', jsonData);
+  };
+
+  // Estados que recogen la imagen del mapa del recinto y la guarda
+  const [imageName, setImageName] = useState(localStorage.getItem('savedImage') || '');
+  const [isImageSaved, setIsImageSaved] = useState(false);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setImageName(file.name);
+  };
+  const handleDeleteImage = () => {
+    setImageName("");
+    localStorage.removeItem("savedImage");
+  };
+  const saveImageLs = () => {
+    localStorage.removeItem("imageName");
+    localStorage.setItem("savedImage", imageName);
+    setIsImageSaved(true);
+  };
+
+  // Parte de la vista del componente
   return (
     <>
       <div className="recinto-main-container">
@@ -22,6 +73,7 @@ function RecintoEvento() {
           <h2>Recinto del evento</h2>
           <div>
             <div className="sendimg-container">
+              { /* Label blanco que contiene la imagen del recinto*/ }
               <div className="first-label-recinto">
                 <div>
                   <p className="mapa">Mapa</p>
@@ -32,20 +84,35 @@ function RecintoEvento() {
                 </div>
                 <div className="btn-first-lbl">
                   <div className="icons">
-                    <HiMagnifyingGlass />
-                    <HiOutlineTrash />
+                    <label htmlFor="file-input" className="icon">
+                      <HiMagnifyingGlass />
+                      <input
+                        id="file-input"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        style={{ display: "none" }}
+                      />
+                    </label>
+                    <HiOutlineTrash onClick={handleDeleteImage} />
                   </div>
+                  {imageName && (
+                    <p className={`img-charge ${isImageSaved ? "saved" : ""}`}>
+                      {imageName}
+                    </p>
+                  )}
                   <div>
-                    <BtnSave />
+                    <BtnSave onClick={saveImageLs} />
                   </div>
                 </div>
               </div>
 
+              { /* Label blanco que contiene los inputs del recinto*/ }
               <div className="second-label-recinto">
                 <form>
                   <div className="row">
                     <div className="inputs">
-                      <label for="aforo">Aforo:</label>
+                      <label htmlFor="aforo">Aforo:</label>
                       <input
                         type="number"
                         id="aforo"
@@ -53,10 +120,13 @@ function RecintoEvento() {
                         min="0"
                         step="1"
                         placeholder="200"
+                        value={formData.aforo}
+                        onChange={handleInputChange}
+
                       />
                     </div>
                     <div className="inputs">
-                      <label for="accesos">Nº de accesos:</label>
+                      <label htmlFor="accesos">Nº de accesos:</label>
                       <input
                         type="number"
                         id="accesos"
@@ -64,21 +134,23 @@ function RecintoEvento() {
                         min="1"
                         step="1"
                         placeholder="20"
+                        value={formData.accesos}
+                        onChange={handleInputChange}
+
                       />
                     </div>
                     <div className="inputs">
-                      <label for="discapacitados">Acceso discapacitados:</label>
-                      <input
-                        type="number"
-                        id="discapacitados"
-                        name="discapacitados"
-                      />
+                      <label htmlFor="discapacitados">Acceso discapacitados:</label>
+                      <select name="discapacitados" value={formData.discapacitados} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                      </select>
                     </div>
                   </div>
 
                   <div className="row">
                     <div className="inputs">
-                      <label for="plantas">Nº de plantas:</label>
+                      <label htmlFor="plantas">Nº de plantas:</label>
                       <input
                         type="number"
                         id="plantas"
@@ -86,16 +158,20 @@ function RecintoEvento() {
                         min="1"
                         step="1"
                         placeholder="4"
+                        value={formData.plantas}
+                        onChange={handleInputChange}
+
                       />
                     </div>
                     <div className="inputs">
-                      <label for="ascensor">Ascensor:</label>
-                      <select name="privadas">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                      </select>                    </div>
+                      <label htmlFor="ascensor">Ascensor:</label>
+                      <select name="ascensor" value={formData.ascensor} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                      </select>{" "}
+                    </div>
                     <div className="inputs">
-                      <label for="aseos">Nº de aseos:</label>
+                      <label htmlFor="aseos">Nº de aseos:</label>
                       <input
                         type="number"
                         id="aseos"
@@ -103,35 +179,40 @@ function RecintoEvento() {
                         min="1"
                         step="1"
                         placeholder="20"
+                        value={formData.aseos}
+                        onChange={handleInputChange}
+
                       />
                     </div>
                   </div>
 
                   <div className="row">
                     <div className="inputs">
-                      <label for="wifi">WIFI:</label>
-                      <select name="wifi">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                      </select>                    </div>
+                      <label htmlFor="wifi">WIFI:</label>
+                      <select name="wifi" value={formData.wifi} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                      </select>
+                    </div>
                     <div className="inputs">
-                      <label for="parking">Parking:</label>
-                      <select name="parking">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                      </select>                    </div>
+                      <label htmlFor="parking">Parking:</label>
+                      <select name="parking" value={formData.parking} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                      </select>
+                    </div>
                     <div className="inputs">
-                      <label for="transporte">Transporte público:</label>
-                      <select name="transporte">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                      </select>                    
-                      </div>
+                      <label htmlFor="transporte">Transporte público:</label>
+                      <select name="transporte" value={formData.transporte} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div className="row two">
                     <div className="inputs">
-                      <label for="emergencia">
+                      <label htmlFor="emergencia">
                         Nº de salidas de emergencia:
                       </label>
                       <input
@@ -141,48 +222,54 @@ function RecintoEvento() {
                         min="1"
                         step="1"
                         placeholder="20"
+                        value={formData.emergencia}
+                        onChange={handleInputChange}
+
                       />
                     </div>
 
                     <div className="inputs">
-                      <label for="restauracion">Zona restauración:</label>
-                      <select name="restauracion">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
+                      <label htmlFor="restauracion">Zona restauración:</label>
+                      <select name="restauracion" value={formData.restauracion} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="row">
                     <div className="inputs">
-                      <label for="exterior">Zona exterior:</label>
-                      <select name="exterior">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                      </select>                    </div>
+                      <label htmlFor="exterior">Zona exterior:</label>
+                      <select name="exterior" value={formData.exterior} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                      </select>
+                    </div>
                     <div className="inputs">
-                      <label for="interior">Zona interior:</label>
-                      <select name="interior">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                      </select>                    </div>
+                      <label htmlFor="interior">Zona interior:</label>
+                      <select name="interior" value={formData.interior} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                      </select>
+                    </div>
                     <div className="inputs">
-                      <label for="privadas">Salas privadas:</label>
-                      <select name="privadas">
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
+                      <label htmlFor="privadas">Salas privadas:</label>
+                      <select name="privadas" value={formData.privadas} onChange={handleInputChange}>
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
                       </select>
                     </div>
                   </div>
                 </form>
                 <div className="btn">
-                  <BtnSave />
+                  <BtnSave onClick={handleSaveForm} />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      { /* Label blanco que contiene la imagen del recinto*/ }
       <div>
         <div className="next-recinto-container">
           <p className="steps">3 Pasos de 3 Completados</p>

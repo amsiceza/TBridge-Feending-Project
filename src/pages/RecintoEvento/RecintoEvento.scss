@@ -11,6 +11,7 @@
 .recinto-main-container {
   display: flex;
   width: 90%;
+  height: 100%;
   background: $white-l-gray;
   border-radius: 10px;
   margin-left: 5%;
@@ -138,4 +139,10 @@
         }
 }
 
+.img-charge{
+    color: $green;
+}
 
+.saved {
+    color: $gray;
+  }

@@ -1,5 +1,5 @@
-@import "../colors.scss";
-@import "../sass/buttons.scss";
+@import "../../colors.scss";
+@import "../../sass/buttons.scss";
 
 
 .container {
@@ -12,7 +12,7 @@
 
 .main-background {
 width: 90%;
-height: 70%;
+height: 120%;
 border-radius: 10px;
 margin-left: 5%;
 margin-right: 5%;
@@ -29,7 +29,7 @@ flex-direction: column;
 align-content: flex-start;
 align-items:flex-start;
 width: 98%;
-height: 60%;
+height: 76%;
 overflow-y: scroll;
 // // overflow-x: none;
 background-color: $white-gray;
@@ -44,16 +44,6 @@ border-radius: 0px 10px 10px 10px;
 
 }
 
-// .activity-div {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-around;
-//     width: 100%;
-//     background-color: red;
-//     height: 71px;
-//     border-bottom: 1px solid $white;
-
-// }
 
 
 .inputs-div {
@@ -102,13 +92,48 @@ flex-grow: 0;
 
 .savebutton-div {
   // width: 100%;
-  padding: 2%;
   display: flex;
   justify-content: flex-end;
+  padding-top: 10px;
 }
 
 .nextbutton-div {
   width: 90%;
   display: flex;
   justify-content: flex-end;
+  padding: 2%;
+  margin-top: 1%;
+ 
+}
+
+
+.next-recinto-container{
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+  margin-right: 5%;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+
+      .steps{
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: 500;
+      }
+      .points{
+          letter-spacing: 6px;
+          font-size: 13px;
+          color: $gray;
+
+          span {
+            color: transparent;
+            border: 1px solid $gray;
+          }
+
+      }
+      .btns{
+          display: flex;
+          gap: 1rem;
+      }
 }
