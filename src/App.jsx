@@ -9,6 +9,7 @@ import Register from './components/Register/Register';
 import Header from "./components/Header/Header";
 import Login from './components/Login/Login';
 import ProgramacionEvento from "./pages/ProgramacionEvento/ProgramacionEvento";
+import EventForm from "./pages/EventForm/EventForm";
 
 function App() {
   const token = localStorage.getItem('token'); // Obtener el token del local storage
@@ -34,6 +35,7 @@ function App() {
               <Route path="/recinto" element={<RecintoEvento />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/evento" element={<EventForm />} />
 
             </Routes>
           </div>
