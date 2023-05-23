@@ -5,11 +5,47 @@ import { HiDocumentCheck, HiClipboardDocumentList, HiClipboardDocumentCheck, HiE
 import BtnDate from '../BtnDate'
 import "./KatTest.scss"
 
-
-/* ICON LIBRARY SHOULD BE HEROICON directly, but I can't change the icon color!!! So using react-icons heroicons instead, slight differences */
-
-
 const KatTest = () => {
+
+//TEST FOR EVENT FORM:
+// date is this format: 
+// 2023-07-29
+
+
+// const dateTimeconverter = (dateString, timeString) => {
+//   const [year, month, day] = dateString.split("-");
+//   const [hours, minutes] = timeString.split(":");
+//   // JavaScript's Date object uses a zero-based index for the month
+//   const combinedDate = new Date(year, month - 1, day, hours, minutes);
+//   return combinedDate
+// }
+
+// const storedEvent = JSON.parse(localStorage.getItem("event"))
+// const eventData = {
+//   nombre: storedEvent.eventName,
+//   descripcion: storedEvent.eventDescription,
+//   location: storedEvent.eventLocation,
+//   inicio: dateTimeconverter(storedEvent.startDate, storedEvent.startTime),
+//   fin: dateTimeconverter(storedEvent.endDate, storedEvent.endTime),
+//   direccion: {
+//     calle: storedEvent.eventLocation, // THIS IS WRONG, CHANGE TO LUGAR?? on backend
+//     localidad: storedEvent.eventCity, 
+//     provincia: storedEvent.eventProvince,
+//   }
+// }
+
+// dispatch(createEvent(eventData))
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className='container'>

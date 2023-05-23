@@ -22,7 +22,7 @@ export const createEvent = createAsyncThunk("event/createEvent", async(data) => 
     extraReducers: (builder) => {
       builder
       .addCase(createEvent.fulfilled, (state, action) => {
-        state.event = action.payload.event
+        state.event = action.payload.evento
         state.createMessage = action.payload.message
       })
     }
