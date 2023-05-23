@@ -59,8 +59,9 @@ const ProgramacionEvento = () => {
       }
     });
     let storageData = JSON.parse(localStorage.getItem(`Program${day}`))
-    if (storageData) {
+    if (storageData.length > 0) {
       setInputGroups(storageData)  //print existing
+      handleSave() //?????
     } else {
       setInputGroups([{ inicio: '', fin: '', actividad: '' }]) //Empty form
     }
