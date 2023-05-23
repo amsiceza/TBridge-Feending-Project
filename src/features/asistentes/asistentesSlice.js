@@ -6,7 +6,8 @@ const initialState = {
   asistentes: [],
 };
 
-export const getAll = createAsyncThunk("usuarios/getAllUsers", async () => {
+export const getAll = createAsyncThunk("usuarios/getAll", async () => {
+  
   try {
     return await asistentesService.getAll();
   } catch (error) {
@@ -15,11 +16,12 @@ export const getAll = createAsyncThunk("usuarios/getAllUsers", async () => {
 });
 
 export const asistentesSlice = createSlice({
-  name: "asistentes",
+  name: "usuarios",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getAll.fulfilled, (state, action) => {
+      console.log(action.payload)
       state.asistentes = action.payload;
     });
   },

@@ -10,13 +10,11 @@ const Asistentes = () => {
 const dispatch = useDispatch();
 
 useEffect(() => {
-
-dispatch(getAll());
-
+  dispatch(getAll());
 }, []);
+
   return (
     <div>
-        Asistentes
         <Asistente/>
     </div>
   )

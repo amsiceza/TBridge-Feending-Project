@@ -1,0 +1,13 @@
+@import "../../colors.scss";
+
+.principal-container-asistents {
+    width: 90%;
+    //height: 100%;
+    left: 380px;
+    top: calc(50% - 938px/2 + 42.5px);
+    background: #EFEFEF;
+    border-radius: 10px;
+    margin-top: 23px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
