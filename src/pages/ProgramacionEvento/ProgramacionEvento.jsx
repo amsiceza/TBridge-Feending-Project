@@ -9,10 +9,11 @@ import BtnNext from '../../components/Buttons/BtnNext';
 import ActivityInputGroup from '../../components/ActivityInputGroup/ActivityInputGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDay } from '../../features/program/programSlice';
+import { useNavigate } from 'react-router-dom'
 
 const ProgramacionEvento = () => {
-
-  let programDayOne = JSON.parse(localStorage.getItem(`Program1`))
+  let navigate = useNavigate();
+  let programDayOne = JSON.parse(localStorage.getItem(`Program1`)) || ""
 
   const dispatch = useDispatch();
   const { currentDay } = useSelector((state) => state.program);
@@ -58,8 +59,9 @@ const ProgramacionEvento = () => {
         button.classList.remove('btn-tab-day-selected');
       }
     });
-    let storageData = JSON.parse(localStorage.getItem(`Program${day}`))
-    if (storageData) {
+    let storageData = JSON.parse(localStorage.getItem(`Program${day}`)) || []
+    console.log(storageData)
+    if (storageData.length > 0) {
       setInputGroups(storageData)  //print existing
     } else {
       setInputGroups([{ inicio: '', fin: '', actividad: '' }]) //Empty form
@@ -78,9 +80,9 @@ const ProgramacionEvento = () => {
     const updatedGroups = [...inputGroups];
     const group = updatedGroups[index];
     const convertedGroup = {
-      inicio: group.inicio ? group.inicio : '00:00',
-      fin: group.fin ? group.fin : '00:00',
-      actividad: group.actividad ? group.actividad : 'N/A',
+      inicio: group.inicio ? group.inicio : '',
+      fin: group.fin ? group.fin : '',
+      actividad: group.actividad ? group.actividad : '',
       showText: true
     };
     updatedGroups[index] = convertedGroup;
@@ -104,18 +106,33 @@ const ProgramacionEvento = () => {
   const handleSave = () => {
     const inputGroupsShowTrue = inputGroups.map((row, index) => {
       return {
-        inicio: row.inicio ? row.inicio : '00:00',
-        fin: row.fin ? row.fin : '00:00',
-        actividad: row.actividad ? row.actividad : 'N/A',
+        inicio: row.inicio ? row.inicio : '',
+        fin: row.fin ? row.fin : '',
+        actividad: row.actividad ? row.actividad : '',
         showText: true
       }
     })
+
     setInputGroups(inputGroupsShowTrue)
     let activityArray = [];
-    inputGroups.forEach(group => activityArray.push({ dia: currentDay, inicio: group.inicio, fin: group.fin, actividad: group.actividad }))
-    localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
+    inputGroups.forEach(group => {
+      if (group.inicio  || group.inicio || group.actividad){  //If one is empty ok, if all are empty, not saved
+      activityArray.push({ dia: currentDay, inicio: group.inicio, fin: group.fin, actividad: group.actividad })
+    }})
+     localStorage.setItem("Program" + currentDay, JSON.stringify(activityArray))
   }
 
+const handleNext = () => {
+  console.log(tabs.length)
+  let finalArray = []
+  tabs.forEach((tab, index) => {
+    let storedData = JSON.parse(localStorage.getItem(`Program${index+1}`))
+    finalArray = [...finalArray, ...storedData]
+  })
+  console.log(finalArray)
+  localStorage.setItem("programacion", JSON.stringify(finalArray))
+  navigate("/recinto")
+  }
 
   // Another component prints the actual form fields. Passing values
   const renderInputGroups = () => {
@@ -173,7 +190,7 @@ const ProgramacionEvento = () => {
         <p className="steps">2 Pasos de 3 Completados</p>
         <p className="points">● ● &#x25CB;</p>
         <div className="btns">
-          <BtnNext></BtnNext>
+          <BtnNext onClick={handleNext}></BtnNext>
         </div>
       </div>
 
