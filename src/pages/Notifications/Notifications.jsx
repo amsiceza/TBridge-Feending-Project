@@ -30,7 +30,7 @@ const Notifications = () => {
 
 
                     <div className='new-notification'>
-                        <p className='new-notification-text'>Nueva notificación:</p>
+                        <p className='new-notification-text1'>Nueva notificación:</p>
                         <textarea
                             className='input-new-notification'
                             placeholder='Añadir notificación'
@@ -60,20 +60,22 @@ const Notifications = () => {
 
                     <div className='send-notifications-buttons'>
                         <BtnSendNow />
-                        <ProgramNotification/>
+                        <ProgramNotification />
 
 
 
                     </div>
 
 
+                    <p className='new-notification-text'>Notificaciones programadas:</p>
                     <div className='programmed-notifications'>
-                        <p className='new-notification-text'>Notificaciones programadas:</p>
-                        <div className='all-program-nots'>
-
-
-
+                        <div className='card-notification'>
+                            <p className='Date-card-notification'>24/05/2023</p>
+                            <p className='Hour-card-notification'>16:00</p>
+                            <p className='who-card-notification'>All</p>
+                            <p className='text-card-notificatoin'>aaaaaaaaaaaaaaaaaaaa</p>
                         </div>
+
                     </div>
 
 

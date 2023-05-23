@@ -15,10 +15,10 @@
 
 .notification-content {
     width: 100%;
-    position: relative;
     padding: 2.5%;
-
-
+    align-content: stretch;
+    display: flex;
+    flex-direction: column;
 
     .notification-title {
         width: 408.18px;
@@ -38,24 +38,23 @@
     .new-notification {
         display: flex;
         flex-direction: column;
-        position: relative;
         width: 100%;
         margin-top: 2%;
         padding: 2px;
-
-        .new-notification-text {
+        height: 20%;
+       
+        .new-notification-text1 {
             font-weight: bold;
             font-size: 16px;
         }
 
         .input-new-notification {
             margin-top: 8px;
-            height: 128px;
             resize: none;
             padding: 10px;
             border: 0.857506px solid #DBDBDB;
             border-radius: 12px;
-            // vertical-align: top;
+            flex-grow: 1;
         }
 
         .character-count {
@@ -106,21 +105,17 @@
         margin-top: 25px;
     }
 
+    .new-notification-text {
+        margin-top: 50px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
     .programmed-notifications {
-        margin-top: 60px;
-
-
-        .new-notification-text {
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .all-program-nots {
-            margin-top: 20px;
-            background-color: #DBDBDB;
-            border-radius: 10px;
-            width: 100%;
-            height: 100px;
-        }
+        margin-top: 20px;
+        background-color: #DBDBDB;
+        border-radius: 10px;
+        width: 100%;
+        flex-grow: 1;
     }
 }
