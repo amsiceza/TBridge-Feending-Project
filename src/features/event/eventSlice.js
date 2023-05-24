@@ -3,7 +3,7 @@ import eventService from "./eventService";
 
 const initialState = {
     event: {},
-    createMessage: ""
+    createEventMsg: ""
 }
 
 
@@ -23,7 +23,7 @@ export const createEvent = createAsyncThunk("event/createEvent", async(data) => 
       builder
       .addCase(createEvent.fulfilled, (state, action) => {
         state.event = action.payload.evento
-        state.createMessage = action.payload.message
+        state.createEventMsg = action.payload.message
       })
     }
 

@@ -3,14 +3,8 @@ import recintoService from "./recintoService";
 
 const initialState = {
     recinto: {},
-    createMessage: ""
+    createRecintoMsg: ""
 };
-
-export const recintoSlice = createSlice({
-    name: "recinto",
-    initialState,
-    reducers: {},
-});
 
 export const createRecinto = createAsyncThunk('recinto/createRecinto',async(recinto)=>{
     try {
@@ -21,7 +15,7 @@ export const createRecinto = createAsyncThunk('recinto/createRecinto',async(reci
 })
 
 
-export const programSlice = createSlice({
+export const recintoSlice = createSlice({
   name: "recinto",
   initialState,
   reducers: {},
@@ -29,14 +23,10 @@ export const programSlice = createSlice({
     builder
     .addCase(createRecinto.fulfilled, (state, action) => {
       state.recinto = action.payload.recinto
-      state.createMessage = action.payload.message
+      state.createRecintoMsg = action.payload.message
     })
   }
-
 })
-
-
-
 
 
 export default recintoSlice.reducer;
