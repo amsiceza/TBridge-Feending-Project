@@ -6,8 +6,12 @@ import { HiDocumentCheck, HiClock, HiChevronDown, HiMapPin } from 'react-icons/h
 
 import './EventForm.scss';
 import BtnSave from '../../components/Buttons/BtnSave';
+import BtnNext from '../../components/Buttons/BtnNext';
+import { useNavigate } from 'react-router';
 
 const EventForm = () => {
+
+  let navigate = useNavigate();
   const [eventName, setEventName] = useState('');
   const [eventDescription, setEventDescription] = useState('');
   const [eventLocation, setEventLocation] = useState('');
@@ -35,6 +39,7 @@ const EventForm = () => {
     };
 
     console.log('Evento:', event);
+    localStorage.setItem("evento", JSON.stringify(event))
 
     // Restablecer los campos del formulario
    /* setEventName('');
@@ -48,7 +53,13 @@ const EventForm = () => {
     setEventEndTime('');*/
   };
 
+const handleNext = () => {
+  navigate("/program");
+}
+
+
   return (
+    <>
     <div className="event-form">
       <form >
         <h3>Información del evento</h3>
@@ -163,14 +174,17 @@ const EventForm = () => {
       <br />
 
       <BtnSave onClick={handleSave}></BtnSave>
-
-
-
-
-      {/* <button type="submit" className="savebutton-div">
-        <HiDocumentCheck /> Guardar
-      </button> */}
+      
     </div>
+
+    <div className="next-recinto-container">
+        <p className="steps">1 Paso de 3 Completado</p>
+        <p className="points">● &#x25CB; &#x25CB;</p>
+        <div className="btns">
+          <BtnNext onClick={handleNext}></BtnNext>
+        </div>
+      </div>
+    </>
   );
 };
 
