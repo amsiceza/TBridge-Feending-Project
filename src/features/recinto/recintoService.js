@@ -4,6 +4,7 @@ const API_URL = "http://localhost:8080";
 
 const createRecinto = async (recintoData) => {
   const res = await axios.post(API_URL + "/recintos/create", recintoData);
+  console.log(res.data)
   return res.data;
 };
 

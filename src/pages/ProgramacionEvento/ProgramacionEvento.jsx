@@ -160,35 +160,35 @@ const testClick = () => {
 
 // SEND EVENT DATA:
 
-const testClick2 = () => {
-  const storedEvent = JSON.parse(localStorage.getItem("event"))
-  console.log(storedEvent)
-    const dateTimeconverter = (dateString, timeString) => {
-    const [year, month, day] = dateString.split("-");
-    const [hours, minutes] = timeString.split(":");
-    // JavaScript's Date object uses a zero-based index for the month
-    const combinedDate = new Date(year, month - 1, day, hours, minutes);
-    return combinedDate
-  }
+// const testClick2 = () => {
+//   const storedEvent = JSON.parse(localStorage.getItem("event"))
+//   console.log(storedEvent)
+//     const dateTimeconverter = (dateString, timeString) => {
+//     const [year, month, day] = dateString.split("-");
+//     const [hours, minutes] = timeString.split(":");
+//     // JavaScript's Date object uses a zero-based index for the month
+//     const combinedDate = new Date(year, month - 1, day, hours, minutes);
+//     return combinedDate
+//   }
   
-  // const storedEvent = JSON.parse(localStorage.getItem("event"))
-  const eventData = {
-    nombre: storedEvent.eventName,
-    descripcion: storedEvent.eventDescription,
-    location: storedEvent.eventLocation,
-    inicio: dateTimeconverter(storedEvent.eventStartDate, storedEvent.eventStartTime),
-    fin: dateTimeconverter(storedEvent.eventEndDate, storedEvent.eventEndTime),
-    direccion: {
-      lugar: storedEvent.eventLocation, // THIS IS WRONG, CHANGE TO LUGAR?? on backend
-      localidad: storedEvent.eventCity, 
-      provincia: storedEvent.eventProvince,
-    }
-  }
-  console.log(eventData)
+//   // const storedEvent = JSON.parse(localStorage.getItem("event"))
+//   const eventData = {
+//     nombre: storedEvent.eventName,
+//     descripcion: storedEvent.eventDescription,
+//     location: storedEvent.eventLocation,
+//     inicio: dateTimeconverter(storedEvent.eventStartDate, storedEvent.eventStartTime),
+//     fin: dateTimeconverter(storedEvent.eventEndDate, storedEvent.eventEndTime),
+//     direccion: {
+//       lugar: storedEvent.eventLocation, // THIS IS WRONG, CHANGE TO LUGAR?? on backend
+//       localidad: storedEvent.eventCity, 
+//       provincia: storedEvent.eventProvince,
+//     }
+//   }
+//   console.log(eventData)
   
-  dispatch(createEvent(eventData))
+//   dispatch(createEvent(eventData))
   
-}
+// }
 
 
 
@@ -235,8 +235,8 @@ const testClick2 = () => {
         </div>
       </div>
 
-      <button onClick={testClick}>Test send to backend</button>
-      <button onClick={testClick2}>Test send to backend event page</button>
+      {/* <button onClick={testClick}>Test send to backend</button>
+      <button onClick={testClick2}>Test send to backend event page</button> */}
     </>
   )
 }
