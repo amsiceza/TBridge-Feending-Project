@@ -150,7 +150,6 @@ function RecintoEvento() {
                         name="aforo"
                         min="0"
                         step="1"
-                        placeholder="200"
                         value={formData.aforo}
                         onChange={handleInputChange}
 
@@ -164,7 +163,6 @@ function RecintoEvento() {
                         name="accesos"
                         min="1"
                         step="1"
-                        placeholder="20"
                         value={formData.accesos}
                         onChange={handleInputChange}
 
@@ -188,7 +186,6 @@ function RecintoEvento() {
                         name="plantas"
                         min="1"
                         step="1"
-                        placeholder="4"
                         value={formData.plantas}
                         onChange={handleInputChange}
 
@@ -209,7 +206,6 @@ function RecintoEvento() {
                         name="aseos"
                         min="1"
                         step="1"
-                        placeholder="20"
                         value={formData.aseos}
                         onChange={handleInputChange}
 
@@ -252,7 +248,6 @@ function RecintoEvento() {
                         name="emergencia"
                         min="1"
                         step="1"
-                        placeholder="20"
                         value={formData.emergencia}
                         onChange={handleInputChange}
 

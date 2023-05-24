@@ -243,3 +243,9 @@
     background-color: #ccc;
     transform: translateX(2px);
 }
+
+.gray{
+    span{
+        color: $gray-white;
+    }
+}
