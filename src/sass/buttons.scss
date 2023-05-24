@@ -47,6 +47,12 @@
 
 }
 
+%lg1 {
+    // position: absolute;
+    width: 150px !important;
+
+}
+
 //SPAN for icon and text
 
 %text-icon-div {
@@ -112,6 +118,11 @@
 .btn-green-lg {
     @extend %btn-green;
     @extend %lg;
+}
+
+.btn-green-lg1 {
+    @extend %btn-green;
+    @extend %lg1;
 }
 
 .btn-green-sm {
@@ -201,8 +212,8 @@
 .switch-button {
     position: relative;
     display: inline-block;
-    width: 54px;
-    height: 28px;
+    width: 50px;
+    height: 24px;
     background-color: #fff;
     border-radius: 17px;
     border: none;
@@ -215,11 +226,11 @@
 
 .switch-button .switch-slider {
     position: absolute;
-    top: 1.7px;
+    top: 0.8px;
     
     left: 0px;
-    width: 23.5px;
-    height: 23.5px;
+    width: 21px;
+    height: 21px;
     background-color: $greenSwich;
     border-radius: 50%;
     transition: transform 0.3s ease-in-out;
