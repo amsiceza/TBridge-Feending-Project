@@ -20,11 +20,11 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-          {token && !window.location.pathname.includes('/register') ? ( // Ternario para condicionar la renderización del Sidebar
+          {token && !window.location.pathname.includes('/register') && !window.location.pathname.includes('/login') ? ( // Ternario para condicionar la renderización del Sidebar
             <Header />
           ) : null}
           <div className="app-container">
-            {token && !window.location.pathname.includes('/register') ? ( // Ternario para condicionar la renderización del Sidebar
+            {token && !window.location.pathname.includes('/register') && !window.location.pathname.includes('/login') ? ( // Ternario para condicionar la renderización del Sidebar
               <div className="sidebar-boss-container">
                 <Sidebar />
               </div>
