@@ -21,11 +21,18 @@ function RecintoEvento() {
   const {createEventMsg} =useSelector((state) => state.event)
   const {createProgramMsg} = useSelector((state) => state.program)
 
+  // console.log(createEventMsg)
+  console.log(createRecintoMsg)
   useEffect(() => {
+    console.log(createRecintoMsg)
+    console.log(createEventMsg)
+    console.log(createProgramMsg)
     if (createRecintoMsg.length > 0 && createEventMsg.length > 0 && createProgramMsg.length > 0) {
-    navigate("/resultado")
-    }
-    return 
+      navigate("/resultado")
+      console.log("success")
+     
+    }  
+    console.log("failure")
   }, [createRecintoMsg, createEventMsg, createProgramMsg]);
   
   const [formData, setFormData] = useState({

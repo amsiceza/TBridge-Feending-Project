@@ -7,23 +7,23 @@ const Resultado = () => {
     // const {program} = useSelector(((state) => state.program))
     // const {recinto} = useSelector(((state) => state.recinto))
 
-    const eventDetails = () => {
-        if (!event._id) {
-        return <>Un momento...</>
-        }
-    }
+    // const eventDetails = () => {
+    //     if (!event._id) {
+    //     return <>Un momento...</>
+    //     }
+    // }
 
-    const programDetails = () => {
-        if (program?.length < 1) {
-        return <>Un momento...</>
-        }
-    }
+    // const programDetails = () => {
+    //     if (program?.length < 1) {
+    //     return <>Un momento...</>
+    //     }
+    // }
 
-    const venueDetails = () => {
-        if (!recinto._id) {
-            return <>Un momento...</>
-            }
-    }
+    // const venueDetails = () => {
+    //     if (!recinto._id) {
+    //         return <>Un momento...</>
+    //         }
+    // }
 
 
 
@@ -32,7 +32,7 @@ const Resultado = () => {
    <>
        
        <div>Resultado</div>
-       <div>
+       {/* <div>
            <h1>Event</h1>
            {eventDetails}
        </div>
@@ -44,7 +44,7 @@ const Resultado = () => {
        <div>
         <h1>Recinto</h1>
         {venueDetails}
-       </div>
+       </div> */}
    </>
 
   )

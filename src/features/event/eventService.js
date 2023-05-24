@@ -4,7 +4,7 @@ const API_URL = "http://localhost:8080";
 
 const createEvent= async (data) => {
   const res = await axios.post(API_URL + "/eventos/create", data);
-  console.log(res.data)
+  console.log(res.data.message)
   return res.data;
 };
 
