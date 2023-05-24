@@ -11,8 +11,8 @@ import Asistentes from "./components/Asistentes/Asistentes";
 import Login from './components/Login/Login';
 import ProgramacionEvento from "./pages/ProgramacionEvento/ProgramacionEvento";
 import EventForm from "./pages/EventForm/EventForm";
-import UserDetails from "./pages/UserDetails/UserDetails";
 import Notifications from "./pages/Notifications/Notifications";
+import AsistenteDetails from "./components/AsistenteDetails/AsistenteDetails";
 
 function App() {
   const token = localStorage.getItem('token'); // Obtener el token del local storage
@@ -41,7 +41,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/evento" element={<EventForm />} />
               <Route path="/notifications" element={<Notifications />} />
-
+              <Route path="/asistente" element={<AsistenteDetails />} />
             </Routes>
           </div>
         </div>
