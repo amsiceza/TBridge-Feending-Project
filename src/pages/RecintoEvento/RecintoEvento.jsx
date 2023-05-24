@@ -10,24 +10,26 @@ import BtnRevision from "../../components/Buttons/BtnRevision";
 
 import "./RecintoEvento.scss";
 import { createRecinto } from "../../features/recinto/recintoSlice";
+import { createEvent } from "../../features/event/eventSlice";
+import { createProgram } from "../../features/program/programSlice";
 
 function RecintoEvento() {
   // Estado que recoge todos los inputs del recinto
   const [formData, setFormData] = useState({
-    aforo: '',
-    accesos: '',
-    discapacitados: 'true',
-    plantas: '',
-    ascensor: 'true',
-    aseos: '',
-    wifi: 'true',
-    parking: 'true',
-    transporte: 'true',
-    emergencia: '',
-    restauracion: 'true',
-    exterior: 'true',
-    interior: 'true',
-    privadas: 'true',
+    aforo: 200,
+    accesos: 2,
+    discapacitados: true,
+    plantas: 4,
+    ascensor: true,
+    aseos: 20,
+    wifi: true,
+    parking: true,
+    transporte: true,
+    emergencia: 5,
+    restauracion: true,
+    exterior: true,
+    interior: true,
+    privadas: true,
   }); 
  // Estados que recogen la imagen del mapa del recinto y la guarda
  const [imageName, setImageName] = useState(localStorage.getItem('savedImage') || '');
@@ -48,8 +50,37 @@ function RecintoEvento() {
     localStorage.setItem('formData', jsonData);
   };
 
-  const onSubmitRecinto = (e) => {
+  const onSubmitAll = (e) => {
     e.preventDefault();
+    //Formatting event data
+    const storedEvent = JSON.parse(localStorage.getItem("evento"))
+    console.log(storedEvent)
+    const dateTimeconverter = (dateString, timeString) => {
+      const [year, month, day] = dateString.split("-");
+      const [hours, minutes] = timeString.split(":");
+      // JavaScript's Date object uses a zero-based index for the month
+      const combinedDate = new Date(year, month - 1, day, hours, minutes);
+      return combinedDate
+    }
+    // const storedEvent = JSON.parse(localStorage.getItem("event"))
+    const eventData = {
+      nombre: storedEvent.name,
+      descripcion: storedEvent.description,
+      inicio: dateTimeconverter(storedEvent.startDate, storedEvent.startTime),
+      fin: dateTimeconverter(storedEvent.endDate, storedEvent.endTime),
+      direccion: {
+        lugar: storedEvent.location, // THIS IS WRONG, CHANGE TO LUGAR?? on backend
+        localidad: storedEvent.city,
+        provincia: storedEvent.province,
+      }
+    }
+    console.log(eventData)
+
+    //Programation data
+
+    let data = JSON.parse(localStorage.getItem("programacion"))
+
+    //Recinto data
     console.log(formData.imagenRecinto)
     const imagenR = localStorage.getItem('savedImage')
     let recintoData = new FormData();
@@ -68,12 +99,20 @@ function RecintoEvento() {
     recintoData.append('zonaInterior', formData.interior)
     recintoData.append('salasPrivadas', formData.privadas)
     recintoData.append('imagenRecinto', imageName)
-    dispatch(createRecinto(recintoData))
+
     console.log(recintoData)
+
+    dispatch(createEvent(eventData))
+    dispatch((createProgram(data)))
+    dispatch(createRecinto(recintoData))
+
   };
 
- 
- 
+
+
+
+
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     setImageName(file);
@@ -306,7 +345,7 @@ function RecintoEvento() {
           <p className="steps">3 Pasos de 3 Completados</p>
           <p className="points">● ● ●</p>
           <div className="btns">
-            <BtnRevision onClick={onSubmitRecinto} />
+            <BtnRevision onClick={onSubmitAll} />
             <BtnPublish  />
           </div>
         </div>
