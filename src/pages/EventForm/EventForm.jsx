@@ -75,7 +75,7 @@ const handleNext = () => {
             required
           />
         </div>
-
+        <br />
         <div className="event-group">
           <label htmlFor="eventDescription">Descripción del evento:</label>
           <textarea
@@ -89,9 +89,9 @@ const handleNext = () => {
         <br />
 
         <div className="parallel-groups">
+
+
           <div className="event-location">
-
-
             <label htmlFor="eventLocation">Localización del evento:</label>
             <input
               type="text"
@@ -103,19 +103,30 @@ const handleNext = () => {
             />
           </div>
 
-          <button type="button" className="btn-location">
-            <span>
-              <HiMapPin /> Localidad <HiChevronDown />
-            </span>
-          </button>
+         
 
         
+          <div className="location-input">
+          <label htmlFor="eventDescription">Localidad:</label>
+          <input
+            id="eventCity"
+            value={eventCity}
+            onChange={(e) => setEventCity(e.target.value)}
+            required
+          />
+        </div>
 
-          <button type="button" className="btn-location">
-            <span>
-              <HiMapPin /> Provincia <HiChevronDown />
-            </span>
-          </button>
+
+
+        <div className="location-input">
+          <label htmlFor="eventProvince">Provincia:</label>
+          <input
+            id="eventProvince"
+            value={eventProvince}
+            onChange={(e) => setEventProvince(e.target.value)}
+            required
+          />
+        </div>
         </div>
 
         <br />
