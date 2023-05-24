@@ -49,7 +49,7 @@ const Notifications = () => {
                             <p className='text-buttons-nots'>Filtrar receptores</p>
                             <AssCategory />
 
-                            <span className="input-date">
+                            <span className="input-date-nots">
                                 <HiCalendar />
                                 <input
                                     type="date"
@@ -60,13 +60,13 @@ const Notifications = () => {
                                 <HiChevronDown />
                             </span>
 
-                            <span className="input-time">
+                            <span className="input-time-nots">
                                 <HiClock />
                                 <input
                                     type="time"
                                     className=""
-                                    // value={eventStartTime}
-                                    // onChange={(e) => setEventStartTime(e.target.value)}
+                                // value={eventStartTime}
+                                // onChange={(e) => setEventStartTime(e.target.value)}
                                 />
                                 <HiChevronDown />
                             </span>
@@ -84,27 +84,25 @@ const Notifications = () => {
 
                     <div className='programmed-notifications'>
 
+                        <div className='scroll-container-notifications'>
 
-
-                        <div className='master-card-notification'>
-                            <div className='card-complete-notification'>
-                                <div className='card-notification'>
-                                    <p className='Date-card-notification'>24/05/2023</p>
-                                    <p className='Hour-card-notification'>16:00</p>
-                                    <p className='who-card-notification'>Allaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                                    <p className='text-card-notification'>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                            <div className='master-card-notification'>
+                                <div className='card-complete-notification'>
+                                    <div className='card-notification'>
+                                        <p className='Date-card-notification'>24/05/2023</p>
+                                        <p className='Hour-card-notification'>16:00</p>
+                                        <p className='who-card-notification'>Allaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                                        <p className='text-card-notification'>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                                    </div>
+                                    <button className='image-button-edit-not'>  {/*onClick={handleGoBookings}*/}
+                                        <img src={BrushEdit} alt='edit-notification' className='button-edit-notification' />
+                                    </button>
                                 </div>
-                                <button className='image-button-edit-not'>  {/*onClick={handleGoBookings}*/}
-                                    <img src={BrushEdit} alt='edit-notification' className='button-edit-notification' />
-                                </button>
+                                <hr className='separator-line' />
                             </div>
-                            <hr className='separator-line' />
+
+                            
                         </div>
-
-
-
-
-
 
                     </div>
                 </div>

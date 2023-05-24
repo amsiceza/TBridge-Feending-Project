@@ -5,7 +5,7 @@ import { HiEnvelope} from "react-icons/hi2"
 const BtnSendNow = (props) => {
   return (
     <>
-     <button type="button" className="btn-green-lg" onClick={props.onClick}><span><HiEnvelope></HiEnvelope>Enviar ahora</span></button>
+     <button type="button" className="btn-green-lg1" onClick={props.onClick}><span><HiEnvelope></HiEnvelope>Enviar ahora</span></button>
     </>
   )
 }
