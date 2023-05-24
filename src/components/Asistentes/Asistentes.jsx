@@ -14,9 +14,9 @@ useEffect(() => {
 }, []);
 
   return (
-    <div>
+    <>
         <Asistente/>
-    </div>
+    </>
   )
 }
 
