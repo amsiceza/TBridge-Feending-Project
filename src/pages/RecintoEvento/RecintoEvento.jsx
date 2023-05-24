@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import Tlf from "../../assets/tlf.png";
+import { useDispatch } from "react-redux";
 
 import { HiMagnifyingGlass, HiOutlineTrash } from "react-icons/hi2";
 
@@ -9,6 +9,7 @@ import BtnPublish from "../../components/Buttons/BtnPublish";
 import BtnRevision from "../../components/Buttons/BtnRevision";
 
 import "./RecintoEvento.scss";
+import { createRecinto } from "../../features/recinto/recintoSlice";
 
 function RecintoEvento() {
   // Estado que recoge todos los inputs del recinto
@@ -27,8 +28,13 @@ function RecintoEvento() {
     exterior: 'true',
     interior: 'true',
     privadas: 'true',
-  });
+  }); 
+ // Estados que recogen la imagen del mapa del recinto y la guarda
+ const [imageName, setImageName] = useState(localStorage.getItem('savedImage') || '');
+ const [isImageSaved, setIsImageSaved] = useState(false);
+  const dispatch = useDispatch()
 
+  // Guardar en el local Storage (2 siguientes funciones)
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -36,20 +42,42 @@ function RecintoEvento() {
       [name]: value,
     }));
   };
-
   const handleSaveForm = (event) => {
     event.preventDefault();
     const jsonData = JSON.stringify(formData);
     localStorage.setItem('formData', jsonData);
   };
 
-  // Estados que recogen la imagen del mapa del recinto y la guarda
-  const [imageName, setImageName] = useState(localStorage.getItem('savedImage') || '');
-  const [isImageSaved, setIsImageSaved] = useState(false);
+  const onSubmitRecinto = (e) => {
+    e.preventDefault();
+    console.log(formData.imagenRecinto)
+    const imagenR = localStorage.getItem('savedImage')
+    let recintoData = new FormData();
+    recintoData.append('aforo', +formData.aforo)
+    recintoData.append('numeroAccesos', +formData.accesos)
+    recintoData.append('accesoDiscapacitados', formData.discapacitados)
+    recintoData.append('numeroPlantas', +formData.plantas)
+    recintoData.append('ascensor', formData.ascensor)
+    recintoData.append('numeroAseos', +formData.aseos)
+    recintoData.append('wifi', formData.wifi)
+    recintoData.append('parking', formData.parking)
+    recintoData.append('transportePublico', formData.transporte)
+    recintoData.append('salidasEmergencia', +formData.emergencia)
+    recintoData.append('zonaRestauracion', formData.restauracion)
+    recintoData.append('zonaExterior', formData.exterior)
+    recintoData.append('zonaInterior', formData.interior)
+    recintoData.append('salasPrivadas', formData.privadas)
+    recintoData.append('imagenRecinto', imageName)
+    dispatch(createRecinto(recintoData))
+    console.log(recintoData)
+  };
 
+ 
+ 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    setImageName(file.name);
+    setImageName(file);
+
   };
   const handleDeleteImage = () => {
     setImageName("");
@@ -57,13 +85,16 @@ function RecintoEvento() {
   };
   const saveImageLs = () => {
     localStorage.removeItem("imageName");
-    localStorage.setItem("savedImage", imageName);
+    localStorage.setItem("savedImage", imageName.name);
     setIsImageSaved(true);
   };
+
+
 
   // Parte de la vista del componente
   return (
     <>
+
       <div className="recinto-main-container">
         <div className="recinto-mvl">
           <img className="tlf1" src={Tlf} alt="" />
@@ -98,7 +129,7 @@ function RecintoEvento() {
                   </div>
                   {imageName && (
                     <p className={`img-charge ${isImageSaved ? "saved" : ""}`}>
-                      {imageName}
+                      {imageName.name}
                     </p>
                   )}
                   <div>
@@ -275,8 +306,8 @@ function RecintoEvento() {
           <p className="steps">3 Pasos de 3 Completados</p>
           <p className="points">● ● ●</p>
           <div className="btns">
-            <BtnRevision />
-            <BtnPublish />
+            <BtnRevision onClick={onSubmitRecinto} />
+            <BtnPublish  />
           </div>
         </div>
       </div>
