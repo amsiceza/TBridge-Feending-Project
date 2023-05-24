@@ -14,9 +14,11 @@ import EventForm from "./pages/EventForm/EventForm";
 import Notifications from "./pages/Notifications/Notifications";
 import Resultado from "./pages/Resultado/Resultado";
 import AsistenteDetails from "./components/AsistenteDetails/AsistenteDetails";
+import { useSelector } from "react-redux";
 
 function App() {
-  const token = localStorage.getItem('token'); // Obtener el token del local storage
+  
+  const{token} = useSelector((state) => state.auth)
 
   return (
     <div>

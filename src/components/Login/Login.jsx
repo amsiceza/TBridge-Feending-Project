@@ -1,74 +1,85 @@
-import React, { useState } from 'react';
-import './Login.scss';
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
+import "./Login.scss";
 
-import Hands from "../../assets/hands.png"
+import Hands from "../../assets/hands.png";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  // const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = formData;
+  const onFormChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/evento");
+    }
+  }, [navigate]);
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await dispatch(login(formData));
 
-    if (!validateEmail(email)) {
-        setErrorMessage('El correo electrónico no es válido');
-        return;
-      }
-  
-      if (!validatePassword(password)) {
-        setErrorMessage('La contraseña debe tener al menos 6 caracteres');
-        return;
-      }
+    const token = localStorage.getItem("token");
 
-    console.log('Email:', email);
-    console.log('Password:', password);
+    
 
-    setEmail('');
-    setPassword('');
-    setErrorMessage('');
-  };
-
-  
-  const validateEmail = (email) => {
-    // Expresión regular para validar el formato de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const validatePassword = (password) => {
-    return password.length >= 6;
+    setFormData({
+      email: "",
+      password: "",
+    });
   };
 
   return (
-    
     <div className="login-container">
       <div className="title-login">
-      <img src={Hands} alt="" />
-      <h1 className='login-word'>Feevents</h1>
+        <img src={Hands} alt="" />
+        <h1 className="login-word">Feevents</h1>
       </div>
 
-      <form onSubmit={handleSubmit} className='formLogin'>
+      <form onSubmit={handleSubmit} className="formLogin">
         <div className="form-group">
-        <hr />
-          <input type="email" id="email" value={email} onChange={handleEmailChange}
+          <hr />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={onFormChange}
             required
-            className="input-style" placeholder="  Escribe tu email"
+            className="input-style"
+            placeholder="  Escribe tu email"
           />
         </div>
         <div className="form-group">
-          <input type="password" id="password" value={password} onChange={handlePasswordChange}
-         required  className="input-style" placeholder="  Escribe tu contraseña" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={onFormChange}
+            required
+            className="input-style"
+            placeholder="  Escribe tu contraseña"
+          />
         </div>
-        <button className="btn-login" type="submit">Login</button>
+        <button className="btn-login" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );

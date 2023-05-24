@@ -4,14 +4,10 @@ import authService from "./authService";
 
 const initialState = {
   usuario: null,
-  token: null,
+  token: localStorage.getItem("token") || "",
 };
 
-export const authSlice = createSlice({
-    name: "auth",
-    initialState,
-    reducers: {},
-});
+
 
 export const register = createAsyncThunk('auth/register',async(usuario)=>{
     try {
@@ -20,5 +16,26 @@ export const register = createAsyncThunk('auth/register',async(usuario)=>{
       console.error(error);
     }
 })
+
+export const login = createAsyncThunk("auth/login", async (usuario) => {
+  try {
+    return await authService.login(usuario);
+  } catch (error) {
+    console.error(error);
+  }
+})
+
+export const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+    .addCase(login.fulfilled, (state, action) => {
+      state.token = action.payload.token
+    })
+  }
+});
+
 
 export default authSlice.reducer;
