@@ -4,7 +4,7 @@ import programService from "./programService";
 const initialState = {
     currentDay: 1,
     program: [],
-    createMessage: ""
+    createProgramMsg: ""
 }
 
 export const changeDay = createAsyncThunk("program/changeDay", async (day) => {
@@ -33,7 +33,7 @@ export const createProgram = createAsyncThunk("program/createProgram", async(dat
       })
       .addCase(createProgram.fulfilled, (state, action)=> {
         state.program = action.payload.programacion
-        state.createMessage = action.payload.message
+        state.createProgramMsg = action.payload.message
       })
 
     }

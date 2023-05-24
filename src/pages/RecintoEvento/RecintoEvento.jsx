@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Tlf from "../../assets/tlf.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { HiMagnifyingGlass, HiOutlineTrash } from "react-icons/hi2";
 
@@ -12,9 +12,22 @@ import "./RecintoEvento.scss";
 import { createRecinto } from "../../features/recinto/recintoSlice";
 import { createEvent } from "../../features/event/eventSlice";
 import { createProgram } from "../../features/program/programSlice";
+import { useNavigate } from "react-router";
 
 function RecintoEvento() {
   // Estado que recoge todos los inputs del recinto
+  const navigate = useNavigate()
+  const {createRecintoMsg} = useSelector((state) => state.recinto)
+  const {createEventMsg} =useSelector((state) => state.event)
+  const {createProgramMsg} = useSelector((state) => state.program)
+
+  useEffect(() => {
+    if (createRecintoMsg.length > 0 && createEventMsg.length > 0 && createProgramMsg.length > 0) {
+    navigate("/resultado")
+    }
+    return 
+  }, [createRecintoMsg, createEventMsg, createProgramMsg]);
+  
   const [formData, setFormData] = useState({
     aforo: 200,
     accesos: 2,
@@ -77,7 +90,6 @@ function RecintoEvento() {
     console.log(eventData)
 
     //Programation data
-
     let data = JSON.parse(localStorage.getItem("programacion"))
 
     //Recinto data

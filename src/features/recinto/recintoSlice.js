@@ -3,7 +3,7 @@ import recintoService from "./recintoService";
 
 const initialState = {
     recinto: {},
-    createMessage: ""
+    createRecintoMsg: ""
 };
 
 export const recintoSlice = createSlice({
@@ -29,7 +29,7 @@ export const programSlice = createSlice({
     builder
     .addCase(createRecinto.fulfilled, (state, action) => {
       state.recinto = action.payload.recinto
-      state.createMessage = action.payload.message
+      state.createRecintoMsg = action.payload.message
     })
   }
 
