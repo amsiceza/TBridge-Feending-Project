@@ -40,7 +40,6 @@ function App() {
               <Route path="/asistentes" element={<Asistentes />} />
               <Route path="/login" element={<Login />} />
               <Route path="/evento" element={<EventForm />} />
-              <Route path="/asistentes" element={<UserDetails />} />
               <Route path="/notifications" element={<Notifications />} />
 
             </Routes>
