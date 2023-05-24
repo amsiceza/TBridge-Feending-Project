@@ -12,6 +12,7 @@ import Login from './components/Login/Login';
 import ProgramacionEvento from "./pages/ProgramacionEvento/ProgramacionEvento";
 import EventForm from "./pages/EventForm/EventForm";
 import Notifications from "./pages/Notifications/Notifications";
+import Resultado from "./pages/Resultado/Resultado";
 import AsistenteDetails from "./components/AsistenteDetails/AsistenteDetails";
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
               <Route path="/notifications" element={<Notifications />} />
               {/* <Route path="/asistente/:id" element={<AsistenteDetails />} />
               <Route path="/asistenteDetails/:id" element={<AsistenteDetails />} /> */}
-              <Route path="/asistenteDetails" element={<AsistenteDetails />} />
+              <Route path="/resultado" element={<Resultado />} />              <Route path="/asistenteDetails" element={<AsistenteDetails />} />
 
             </Routes>
           </div>
