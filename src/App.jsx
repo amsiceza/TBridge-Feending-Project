@@ -12,6 +12,7 @@ import Login from './components/Login/Login';
 import ProgramacionEvento from "./pages/ProgramacionEvento/ProgramacionEvento";
 import EventForm from "./pages/EventForm/EventForm";
 import Notifications from "./pages/Notifications/Notifications";
+import Resultado from "./pages/Resultado/Resultado";
 
 function App() {
   const token = localStorage.getItem('token'); // Obtener el token del local storage
@@ -40,7 +41,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/evento" element={<EventForm />} />
               <Route path="/notifications" element={<Notifications />} />
-
+              <Route path="/resultado" element={<Resultado />} />
             </Routes>
           </div>
         </div>
