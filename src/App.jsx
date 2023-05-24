@@ -41,7 +41,10 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/evento" element={<EventForm />} />
               <Route path="/notifications" element={<Notifications />} />
-              <Route path="/asistente" element={<AsistenteDetails />} />
+              {/* <Route path="/asistente/:id" element={<AsistenteDetails />} />
+              <Route path="/asistenteDetails/:id" element={<AsistenteDetails />} /> */}
+              <Route path="/asistenteDetails" element={<AsistenteDetails />} />
+
             </Routes>
           </div>
         </div>
