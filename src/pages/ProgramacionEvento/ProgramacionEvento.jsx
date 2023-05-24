@@ -153,12 +153,12 @@ const handleNext = () => {
 
 
   // FOR LAST PAGE - send program data
-// const testClick = () => {
-//   let data = JSON.parse(localStorage.getItem("programacion"))
-//   dispatch((createProgram(data)))
-// }
+const testClick = () => {
+  let data = JSON.parse(localStorage.getItem("programacion"))
+  dispatch((createProgram(data)))
+}
 
-//SEND EVENT DATA:
+// SEND EVENT DATA:
 
 // const testClick2 = () => {
 //   const storedEvent = JSON.parse(localStorage.getItem("event"))
@@ -179,7 +179,7 @@ const handleNext = () => {
 //     inicio: dateTimeconverter(storedEvent.eventStartDate, storedEvent.eventStartTime),
 //     fin: dateTimeconverter(storedEvent.eventEndDate, storedEvent.eventEndTime),
 //     direccion: {
-//       calle: storedEvent.eventLocation, // THIS IS WRONG, CHANGE TO LUGAR?? on backend
+//       lugar: storedEvent.eventLocation, // THIS IS WRONG, CHANGE TO LUGAR?? on backend
 //       localidad: storedEvent.eventCity, 
 //       provincia: storedEvent.eventProvince,
 //     }
@@ -235,8 +235,8 @@ const handleNext = () => {
         </div>
       </div>
 
-      {/* <button onClick={testClick}>Test send to backend</button> */}
-      {/* <button onClick={testClick2}>Test send to backend event page</button> */}
+      {/* <button onClick={testClick}>Test send to backend</button>
+      <button onClick={testClick2}>Test send to backend event page</button> */}
     </>
   )
 }
