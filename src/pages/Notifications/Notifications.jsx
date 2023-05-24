@@ -6,6 +6,7 @@ import AssCategory from '../../components/Buttons/AssistantsCategory';
 import SwitchButton from '../../components/Buttons/Swichbutton';
 import BtnSendNow from '../../components/Buttons/BtnSendNow';
 import ProgramNotification from '../../components/Buttons/ProgramNotification';
+import BrushEdit from '../../assets/icons/brush-edit.png'
 
 
 
@@ -26,9 +27,6 @@ const Notifications = () => {
                 <div className='notification-content'>
                     <h2 className='notification-title'>Enviar notificaciones</h2>
 
-
-
-
                     <div className='new-notification'>
                         <p className='new-notification-text1'>Nueva notificación:</p>
                         <textarea
@@ -40,10 +38,6 @@ const Notifications = () => {
                         ></textarea>
                         <span className="character-count">{notification.length}/{maxLength}</span>
                     </div>
-
-
-
-
 
                     <div className='select-options-notifications'>
                         <div className='div-swichButton'>
@@ -61,37 +55,38 @@ const Notifications = () => {
                     <div className='send-notifications-buttons'>
                         <BtnSendNow />
                         <ProgramNotification />
-
-
-
                     </div>
 
 
                     <p className='new-notification-text'>Notificaciones programadas:</p>
+
+
                     <div className='programmed-notifications'>
-                        <div className='card-notification'>
-                            <p className='Date-card-notification'>24/05/2023</p>
-                            <p className='Hour-card-notification'>16:00</p>
-                            <p className='who-card-notification'>All</p>
-                            <p className='text-card-notificatoin'>aaaaaaaaaaaaaaaaaaaa</p>
+
+
+
+                        <div className='master-card-notification'>
+                            <div className='card-complete-notification'>
+                                <div className='card-notification'>
+                                    <p className='Date-card-notification'>24/05/2023</p>
+                                    <p className='Hour-card-notification'>16:00</p>
+                                    <p className='who-card-notification'>Allaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                                    <p className='text-card-notification'>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                                </div>
+                                <button className='image-button-edit-not'>  {/*onClick={handleGoBookings}*/}
+                                    <img src={BrushEdit} alt='edit-notification' className='button-edit-notification' />
+                                </button>
+                            </div>
+                            <hr className='separator-line' />
                         </div>
+                                              
+                        
+
+
+
 
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
-
             </div>
         </>
     );

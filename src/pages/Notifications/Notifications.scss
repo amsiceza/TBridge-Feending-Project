@@ -11,6 +11,7 @@
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 35px;
+    overflow: hidden;
 }
 
 .notification-content {
@@ -19,6 +20,7 @@
     align-content: stretch;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     .notification-title {
         width: 408.18px;
@@ -42,7 +44,7 @@
         margin-top: 2%;
         padding: 2px;
         height: 20%;
-       
+
         .new-notification-text1 {
             font-weight: bold;
             font-size: 16px;
@@ -111,11 +113,98 @@
         font-size: 16px;
     }
 
+
+
+
+
+
+
     .programmed-notifications {
+        display: flex;
+        flex-direction: column;
         margin-top: 20px;
         background-color: #DBDBDB;
         border-radius: 10px;
         width: 100%;
         flex-grow: 1;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 15px;  
+        overflow: auto;  
+        max-height: 80vh;
+
+        
+
+        .master-card-notification {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;                 
+           
+          
+            .card-complete-notification {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 94%;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                font-size: 14px;
+                color: #666666;
+                
+                .card-notification {
+                    display: flex;
+                    flex-direction: row;
+                    background-color: #fff;
+                    border-radius: 12px;
+                    height: 45px;
+                    width: 100%;
+                    align-items: center;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    gap: 15px;
+
+                    .text-card-notification {
+                        max-width: 85%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .who-card-notification {
+                        max-width: 15%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+
+
+                .image-button-edit-not {
+                    background-color: #DBDBDB;
+                    border: none;
+
+                }
+
+
+            }
+
+            .separator-line {
+                border: none;
+                height: 1px;
+                width: 94%;
+                background-color: #ffffff;
+            }
+
+
+        }
+
+
+
     }
 }
