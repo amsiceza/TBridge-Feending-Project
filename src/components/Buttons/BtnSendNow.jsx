@@ -2,10 +2,10 @@ import React from 'react'
 import "../../sass/buttons.scss"
 import { HiEnvelope} from "react-icons/hi2"
 
-const BtnSendNow = () => {
+const BtnSendNow = (props) => {
   return (
     <>
-     <button type="button" className="btn-green-lg"><span><HiEnvelope></HiEnvelope>Enviar ahora</span></button>
+     <button type="button" className="btn-green-lg" onClick={props.onClick}><span><HiEnvelope></HiEnvelope>Enviar ahora</span></button>
     </>
   )
 }

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import "./Notifications.scss";
-import BtnDate from '../../components/Buttons/BtnDate';
-import BtnTime from '../../components/Buttons/BtnTime';
+// import BtnDate from '../../components/Buttons/BtnDate';
+// import BtnTime from '../../components/Buttons/BtnTime';
 import AssCategory from '../../components/Buttons/AssistantsCategory';
 import SwitchButton from '../../components/Buttons/Swichbutton';
 import BtnSendNow from '../../components/Buttons/BtnSendNow';
 import ProgramNotification from '../../components/Buttons/ProgramNotification';
 import BrushEdit from '../../assets/icons/brush-edit.png'
+import { HiCalendar, HiChevronDown, HiClock } from 'react-icons/hi2';
 
 
 
@@ -47,13 +48,33 @@ const Notifications = () => {
                         <div className='filter-assistants-buttons'>
                             <p className='text-buttons-nots'>Filtrar receptores</p>
                             <AssCategory />
-                            <BtnDate />
-                            <BtnTime />
+
+                            <span className="input-date">
+                                <HiCalendar />
+                                <input
+                                    type="date"
+                                    className=""
+                                // value={eventStartDate}
+                                // onChange={(e) => setEventStartDate(e.target.value)}
+                                />
+                                <HiChevronDown />
+                            </span>
+
+                            <span className="input-time">
+                                <HiClock />
+                                <input
+                                    type="time"
+                                    className=""
+                                    // value={eventStartTime}
+                                    // onChange={(e) => setEventStartTime(e.target.value)}
+                                />
+                                <HiChevronDown />
+                            </span>
                         </div>
                     </div>
 
                     <div className='send-notifications-buttons'>
-                        <BtnSendNow />
+                        <BtnSendNow />   {/*onClick={createNotification}*/}
                         <ProgramNotification />
                     </div>
 
@@ -79,8 +100,8 @@ const Notifications = () => {
                             </div>
                             <hr className='separator-line' />
                         </div>
-                                              
-                        
+
+
 
 
 
